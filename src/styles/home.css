@@ -7,7 +7,25 @@
 .box {
     height: 200px;
     width: 300px;
-    border-radius: 20px
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.marketing h2 {
+    color: white;
+}
+
+.box-title:nth-child(1) h2 {
+    color: #ff8a00
+}
+
+.box-title:nth-child(2) h2 {
+    color: #4baf51
+}
+
+.box-title:nth-child(3) h2 {
+    color: yellow
 }
 
 .box:nth-child(1) {

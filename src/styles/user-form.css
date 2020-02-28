@@ -1,0 +1,40 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+label {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+input {
+    border-radius: 5px;
+    height: 40px;
+    background-color: #354147;
+    border: none;
+}
+
+button {
+    padding: 20px 20px;
+    background-color: #D84A3B;
+    color: white;
+    border: none;
+    margin-top: 40px;
+    font-size: 18px; 
+}
+
+.form-section {
+    background-color: #22282c;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-bottom: 40px;
+    -webkit-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
+    -moz-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
+    box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
+}
+
+
