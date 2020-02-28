@@ -1,6 +1,6 @@
 //import axios from "axios";
 require("dotenv").config();
-
+//add the apiKey to the env file and do not commit that on github
 class APISpoonacular {
   constructor() {
     this.name = "APISpoonacular";
