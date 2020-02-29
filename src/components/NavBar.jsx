@@ -25,9 +25,9 @@ export default function NavBar() {
                     <NavLink to="/signup" className="link" activeClassName="is-active">
                         SIGN UP
                     </NavLink>   
-                    <NavLink to="/user" className="link" activeClassName="is-active">
+                    {/* <NavLink to="/user" className="link" activeClassName="is-active">
                         USER
-                    </NavLink>  
+                    </NavLink>   */}
                 </div>
             </div>
         </div>

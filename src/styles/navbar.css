@@ -8,14 +8,13 @@ a {
     display: flex;
     align-items: center;
     color: white;
+    justify-content: space-between;
+    /* border-bottom: 1px solid #354147; */
+    padding: 20px
 }
 
 .navbar {
-    /* background-color: #282727; */
-    height: 70px;
-    border: 1px solid white;
-    display: flex;
-    align-items: center;
+    border-bottom: 1px solid #354147;
 }
 
 .menu  {
@@ -26,4 +25,12 @@ a {
 .menu a {
    margin-left: 20px;
    color: white;
+   border: 1px solid #354147;
+   padding: 10px 30px;
+   border-radius: 20px
+}
+
+.menu a:hover {
+    color: #D84A3B;
+    border-color: #D84A3B;
 }

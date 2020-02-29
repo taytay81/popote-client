@@ -11,9 +11,9 @@ export default class User extends Component {
                 <div className="container">
                     <div className="user-space"> 
                         <div className="left-section">            
-                            <div className="title-user">
+                            {/* <div className="title-user">
                                 <span>Welcome back FIRSTNAME LASTNAME</span>
-                            </div>
+                            </div> */}
                             <div className="user-favs">
                                 <h2>My favorites</h2>
                                 <div className="user-favs-list">
@@ -43,10 +43,11 @@ export default class User extends Component {
                             </div>
                         </div> 
                         <div className="right-section">
-                            <div className="title-user">
+                            {/* <div className="title-user">
                                 Update your user informations
-                            </div>    
+                            </div>     */}
                             <div className="form-section">
+                                <h2>My account</h2>
                                 <UserForm/>        
                             </div>
                         </div>

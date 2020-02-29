@@ -37,4 +37,14 @@ button {
     box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
 }
 
+.form-section h2 {
+    margin: 0;
+    padding: 0;
+    color: #D84A3B;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #1c2023;
+    font-weight: normal;
+}
+
 
