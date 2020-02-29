@@ -1,0 +1,23 @@
+.all-boxes {
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-between;
+}
+
+.box {
+    height: 200px;
+    width: 300px;
+    border-radius: 20px
+}
+
+.box:nth-child(1) {
+    background-color: #ff8a00
+}
+
+.box:nth-child(2) {
+    background-color: #4baf51
+}
+
+.box:nth-child(3) {
+    background-color: yellow
+}

@@ -14,8 +14,7 @@ class TesseractObject {
     let result = await worker.detect(img);
     //console.log("detect", result.data);
     result = await worker.recognize(img);
-    //console.log("recognize", result.data);
-
+    console.log("recognize", result.data);
     await worker.terminate();
     return result.data;
   }
