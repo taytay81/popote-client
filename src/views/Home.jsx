@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import NavBar from "./../components/NavBar";
 import '../styles/home.css';
 // import FilterList from "./../components/FilterList";

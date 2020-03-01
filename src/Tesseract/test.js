@@ -6,18 +6,17 @@ class TesseractObject {
     this.name = "TesseractObject";
   }
 
-  async getTextFromImage() {
-    console.log(this.name);
+  async getTextFromImage(img) {
+    console.log(img);
     await worker.load();
     await worker.loadLanguage("eng");
     await worker.initialize("eng");
-    let result = await worker.detect("./image/ticket1.jpg");
-    console.log("detect", result.data);
-    result = await worker.recognize("./image/ticket1.jpg");
+    let result = await worker.detect(img);
+    //console.log("detect", result.data);
+    result = await worker.recognize(img);
     console.log("recognize", result.data);
-
     await worker.terminate();
-    //return text;
+    return result.data;
   }
 }
 
