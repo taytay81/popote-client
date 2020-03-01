@@ -7,8 +7,8 @@
 }
 
 .home-container {
-    height: 100vh;
-    overflow: hidden;
+    /* height: 100vh;
+    overflow: hidden; */
 }
 
 .marketing h2 {
@@ -89,4 +89,79 @@
     -ms-transform: scale(0.9);
     transform: scale(0.9);
   }
+}
+
+
+/** home second page */
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: #22282c;
+  padding: 50px 50px;
+}
+
+.input-and-btn input {
+  padding-left: 15px;
+  width: 80%;
+  height: 60px;
+  color: white
+}
+
+.input-and-btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* #main-search-bar {
+  width: 40%;
+  height: 60px;
+} */
+
+.btn-search {
+  margin-left: 30px;
+  height: 60px; 
+  padding: 20px 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #D84A3B;
+}
+
+.home-second-page > .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+}
+
+/* .home-second-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+.home-second-page > .container > form {
+  -webkit-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
+  -moz-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
+  box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
+  width: 100%
+}
+
+.more-filter {
+  margin-top: 20px
+}
+
+#style-span {
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px solid #D84A3B
+}
+
+.marketing-question {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 80px;
 }
