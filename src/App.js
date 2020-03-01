@@ -11,6 +11,7 @@ import Signup from "./views/Signup";
 import NotFound from "./views/NotFound";
 import tesseract from "./Tesseract/test.js";
 import spoonacular from "./Api/APISpoonacular.js";
+
 import "./App.css";
 import SearchRecipeWithScanTicket from "./views/SearchRecipeWithScanTicket";
 
