@@ -10,36 +10,36 @@ export default class scanTicket extends Component {
     loading: false,
     //this will be taken from the ingredient database
     ingredientsInDb: "",
-    //need to add the field Ingredientchecked to true .
+    //todo need to add the field Ingredientchecked to true .
     matchIngredients: [
       {
         id: "5e5924ef6d0c853ad0f85c07",
         name: "rice",
-        image: undefined,
+        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
         ingredientChecked: true
       },
       {
         id: "5e5924ef6d0c853ad0f85c9f",
         name: "tahini",
-        image: undefined,
+        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
         ingredientChecked: true
       },
       {
         id: "5e5924ef6d0c853ad0f85b6b",
         name: "olives",
-        image: undefined,
+        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
         ingredientChecked: true
       },
       {
         id: "5e5924ef6d0c853ad0f8593f",
         name: "arugula",
-        image: undefined,
+        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
         ingredientChecked: true
       },
       {
         id: "5e5924ef6d0c853ad0f85afc",
         name: "kale",
-        image: undefined,
+        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
         ingredientChecked: true
       }
     ]
@@ -108,7 +108,8 @@ export default class scanTicket extends Component {
           var ingredientToAdd = {
             id: ingredientsInDb[i]._id,
             name: ingredientsInDb[i].name,
-            image: ingredientsInDb.image
+            image: ingredientsInDb.image,
+            ingredientChecked: true
           };
 
           copy[index] = ingredientToAdd;
@@ -121,7 +122,8 @@ export default class scanTicket extends Component {
             var ingredientToAdd = {
               id: ingredientsInDb[i]._id,
               name: ingredientsInDb[i].name,
-              image: ingredientsInDb.image
+              image: ingredientsInDb.image,
+              ingredientChecked: true
             };
 
             copy[index] = ingredientToAdd;
@@ -147,52 +149,68 @@ export default class scanTicket extends Component {
     console.log(this.state.matchIngredients);
   };
 
-
   render() {
     return (
-      <div>
-        <label className="fileUploaderContainer">
-          Click here to upload documents
-          <input
-            type="file"
-            id="fileUploader"
-            onChange={this.handleChange}
-            multiple
-          />
-        </label>
-        <div>
-          {this.state.uploadFile.map((value, index) => {
-            return (
-              <img key={index} src={value} width="100px" alt="TicketPreview" />
-            );
-          })}
-        </div>
-        {this.state.loading && <Loader></Loader>}
-        {!this.state.loading && (
-          <button className="button" onClick={this.scanText}>
-            {" "}
-            scan ticket
-          </button>
-        )}
-        {!this.state.loading && (
-          <button className="button" onClick={this.findIngredientsInDb}>
-            {" "}
-            retrieve ingredients
-          </button>
-        )}
-        {this.state.matchIngredients.map((ingredient, i) => (
-          <div key={i}>
-            <label>{ingredient.name}</label>
-            <img src={ingredient.image} alt={ingredient.name + i} />
-            <input
-              id={ingredient.id}
-              type="checkbox"
-              value={ingredient.name}
-              checked={this.state.matchIngredients[i].ingredientChecked}
-              onChange={e => this.handleCheckboxChange(e, i)}
-            ></input>
+      <div className="scanTicket-section">
+        <div className="scanTicket-left">
+          <h2> Scan your groceries ticket to search for recipes </h2>
+          <div className="upload-btn-wrapper">
+            <label className="fileUploaderContainer">
+              Upload your ticket
+              <input
+                type="file"
+                id="fileUploader"
+                onChange={this.handleChange}
+                multiple
+              />
+            </label>
           </div>
-        ))}
+
+          <div>
+            {this.state.uploadFile.map((value, index) => {
+              return (
+                <img
+                  key={index}
+                  src={value}
+                  width="200px"
+                  alt="TicketPreview"
+                />
+              );
+            })}
+          </div>
+          {this.state.loading && <Loader></Loader>}
+          {!this.state.loading && (
+            <button className="button" onClick={this.scanText}>
+              {" "}
+              Analyse Ticket
+            </button>
+          )}
+          {!this.state.loading && (
+            <button className="button" onClick={this.findIngredientsInDb}>
+              {" "}
+              Get ingredients
+            </button>
+          )}
+        </div>
+        <div className="scanTicket-right">
+          {this.state.matchIngredients.map((ingredient, i) => (
+            <div key={i} className="scan-found-ingredients">
+              <label className="checkbox-container">
+                {ingredient.name}
+                <input
+                  id={ingredient.id}
+                  type="checkbox"
+                  value={ingredient.name}
+                  checked={this.state.matchIngredients[i].ingredientChecked}
+                  onChange={e => this.handleCheckboxChange(e, i)}
+                ></input>
+                <span className="checkmark"></span>
+              </label>
+
+              <img src={ingredient.image} alt={ingredient.name + i} />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

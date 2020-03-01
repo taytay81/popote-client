@@ -18,7 +18,7 @@ input {
     border: none;
 }
 
-button {
+.button {
     padding: 20px 20px;
     background-color: #D84A3B;
     color: white;
@@ -46,5 +46,6 @@ button {
     border-bottom: 1px solid #1c2023;
     font-weight: normal;
 }
+
 
 
