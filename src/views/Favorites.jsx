@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../components/NavBar";
-import apiHandler from "../Api/APIHandler";
+import apiHandler from "../api/APIHandler";
 import RecipeCard from "../components/RecipeCard";
 //seed the database with User and recipe
 //retrieve list of favorite on did mount

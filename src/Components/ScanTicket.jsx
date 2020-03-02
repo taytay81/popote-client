@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import tesseract from "../Tesseract/test.js";
 import Loader from "../components/Loader.jsx";
-import apiHandler from "../Api/APIHandler";
+import apiHandler from "../api/APIHandler";
 
 export default class scanTicket extends Component {
   state = {

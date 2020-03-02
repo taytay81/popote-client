@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './../styles/login.css';
+import APIHandler from './../api/APIHandler'
 
 export default class LoginForm extends Component {
 
@@ -15,6 +16,10 @@ export default class LoginForm extends Component {
 
     submitForm = e => {
         e.preventDefault();
+        APIHandler.post("/albums", {
+            email: this.state.email,
+            password: this.state.password     
+        })
     }
 
     render() {
@@ -37,7 +42,7 @@ export default class LoginForm extends Component {
                             id="password"
                             type="password"
                         />
-                        <span>No account yet ? <a href="/Signup">Create one</a></span>
+                        <span>No account yet ? <a href="/signup">Create one</a></span>
                         <button className="btn-create">CONNECT</button>
                     </form>
                 </div>
