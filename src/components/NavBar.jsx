@@ -28,9 +28,15 @@ export default function NavBar() {
           <NavLink to="/user" className="link" activeClassName="is-active">
             MY PROFIL
           </NavLink>
-          <NavLink to="/recipes" className="link" activeClassName="is-active">
+          <NavLink
+            to="/recipes"
+            exact
+            className="link"
+            activeClassName="is-active"
+          >
             RECIPES
           </NavLink>
+
           <NavLink to="/login" className="link" activeClassName="is-active">
             LOG IN
           </NavLink>

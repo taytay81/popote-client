@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import tesseract from "../Tesseract/test.js";
 import Loader from "../components/Loader.jsx";
-import apiHandler from "../Api/APIHandler";
+import APIHandler from "../api/APIHandler";
 
 export default class scanTicket extends Component {
   state = {
@@ -11,43 +11,11 @@ export default class scanTicket extends Component {
     //this will be taken from the ingredient database
     ingredientsInDb: "",
     //todo need to add the field Ingredientchecked to true .
-    matchIngredients: [
-      {
-        id: "5e5924ef6d0c853ad0f85c07",
-        name: "rice",
-        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
-        ingredientChecked: true
-      },
-      {
-        id: "5e5924ef6d0c853ad0f85c9f",
-        name: "tahini",
-        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
-        ingredientChecked: true
-      },
-      {
-        id: "5e5924ef6d0c853ad0f85b6b",
-        name: "olives",
-        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
-        ingredientChecked: true
-      },
-      {
-        id: "5e5924ef6d0c853ad0f8593f",
-        name: "arugula",
-        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
-        ingredientChecked: true
-      },
-      {
-        id: "5e5924ef6d0c853ad0f85afc",
-        name: "kale",
-        image: "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
-        ingredientChecked: true
-      }
-    ]
+    matchIngredients: []
   };
 
   componentDidMount() {
-    apiHandler
-      .get("/ingredients")
+    APIHandler.get("/ingredients")
       .then(apiRes => {
         console.log(apiRes);
         this.setState({ ingredientsInDb: apiRes.data });
@@ -85,7 +53,7 @@ export default class scanTicket extends Component {
         }
         this.setState({ ScanDocuments: documents });
         this.setState({ loading: false });
-        console.log("documents", this.state.ScanDocuments);
+        this.findIngredientsInDb(documents);
       })
       .catch(error => {
         console.log(error);
@@ -94,16 +62,17 @@ export default class scanTicket extends Component {
       });
   };
 
-  findIngredientsInDb = () => {
+  findIngredientsInDb = documents => {
     const ingredientsInDb = this.state.ingredientsInDb;
-    const ingredientsFoundInTicket = this.state.ScanDocuments;
-    var copy = [...this.state.matchIngredients];
+    const ingredientsFoundInTicket = documents;
+    var matchIngredientsCopy = [...this.state.matchIngredients];
 
-    var index = 0;
     ingredientsFoundInTicket.map(function(ingredient, i) {
       for (let i = 0; i < ingredientsInDb.length; i++) {
         if (
-          ingredientsInDb[i].name.toUpperCase() === ingredient.toUpperCase()
+          ingredientsInDb[i].name.toUpperCase() === ingredient.toUpperCase() ||
+          ingredientsInDb[i].name.toUpperCase() ===
+            ingredient + "s".toUpperCase()
         ) {
           var ingredientToAdd = {
             id: ingredientsInDb[i]._id,
@@ -111,35 +80,17 @@ export default class scanTicket extends Component {
             image: ingredientsInDb.image,
             ingredientChecked: true
           };
-
-          copy[index] = ingredientToAdd;
-          index++;
-        } else {
-          if (
-            ingredientsInDb[i].name.toUpperCase() ===
-            ingredient + "s".toUpperCase()
-          ) {
-            var ingredientToAdd = {
-              id: ingredientsInDb[i]._id,
-              name: ingredientsInDb[i].name,
-              image: ingredientsInDb.image,
-              ingredientChecked: true
-            };
-
-            copy[index] = ingredientToAdd;
-            index++;
-          }
+          matchIngredientsCopy.push(ingredientToAdd);
+          /*copy[index] = ingredientToAdd;
+          index++;*/
         }
       }
     });
-    console.log("copy", copy);
+    console.log("copy", matchIngredientsCopy);
 
-    /*WHY THE SETSTATE DOESNT WORK  WHNE IM DOING A COPY  */
     this.setState({
-      matchIngredients: copy
+      matchIngredients: matchIngredientsCopy
     });
-
-    console.log("tableau retourne", this.state.matchIngredients);
   };
 
   handleCheckboxChange = (event, i) => {
@@ -150,6 +101,7 @@ export default class scanTicket extends Component {
   };
 
   render() {
+    console.log("tableau retourne", this.state.matchIngredients);
     return (
       <div className="scanTicket-section">
         <div className="scanTicket-left">
@@ -182,35 +134,31 @@ export default class scanTicket extends Component {
           {!this.state.loading && (
             <button className="button" onClick={this.scanText}>
               {" "}
-              Analyse Ticket
-            </button>
-          )}
-          {!this.state.loading && (
-            <button className="button" onClick={this.findIngredientsInDb}>
-              {" "}
               Get ingredients
             </button>
           )}
         </div>
-        <div className="scanTicket-right">
-          {this.state.matchIngredients.map((ingredient, i) => (
-            <div key={i} className="scan-found-ingredients">
-              <label className="checkbox-container">
-                {ingredient.name}
-                <input
-                  id={ingredient.id}
-                  type="checkbox"
-                  value={ingredient.name}
-                  checked={this.state.matchIngredients[i].ingredientChecked}
-                  onChange={e => this.handleCheckboxChange(e, i)}
-                ></input>
-                <span className="checkmark"></span>
-              </label>
-
-              <img src={ingredient.image} alt={ingredient.name + i} />
-            </div>
-          ))}
-        </div>
+        {this.state.matchIngredients.length && (
+          <div className="scanTicket-right">
+            {this.state.matchIngredients.map((ingredient, i) => (
+              <div key={i} className="scan-found-ingredients">
+                <label className="checkbox-container">
+                  {ingredient.name}
+                  <input
+                    id={ingredient.id}
+                    type="checkbox"
+                    value={ingredient.name}
+                    checked={this.state.matchIngredients[i].ingredientChecked}
+                    onChange={e => this.handleCheckboxChange(e, i)}
+                  ></input>
+                  <span className="checkmark"></span>
+                </label>
+                <img src={ingredient.image} alt={ingredient.name + i} />
+              </div>
+            ))}
+            <button className="button"> Search For recipes</button>
+          </div>
+        )}
       </div>
     );
   }
