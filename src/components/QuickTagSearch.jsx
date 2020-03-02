@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./../styles/quick-tag-search.css";
+import React, { Component } from 'react'
+import './../styles/quick-tag-search.css';
 import APIHandler from "../api/APIHandler";
 
 export default class QuickTagSearch extends Component {
