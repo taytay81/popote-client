@@ -1,0 +1,27 @@
+.recipe-card img {
+  height: 200px;
+  padding-bottom: 20px;
+  justify-content: center;
+  filter: brightness(50%);
+}
+.favorite-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+.recipe-card h3 {
+  color: white;
+  padding-bottom: 20px;
+}
+.recipe-card p {
+  color: grey;
+  font-weight: bold;
+}
+
+.recipe-card button {
+  padding: 15px 15px !important;
+
+  margin-top: 0px !important;
+}
+.timer-icon {
+  margin-right: 10px;
+}

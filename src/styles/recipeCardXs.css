@@ -1,0 +1,10 @@
+.recipe-cardXs img {
+  height: 50px;
+  margin-right: 10px;
+}
+.recipe-cardXs {
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+  background-color: #354147;
+}

@@ -3,7 +3,7 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Home from "./views/Home";
 import Recipes from "./views/Recipes";
-import Recipe from "./views/Recipes";
+import Recipe from "./views/Recipe";
 import Favorites from "./views/Favorites";
 import User from "./views/User";
 import Login from "./views/Login";
@@ -52,14 +52,14 @@ function App() {
       ) : (
     <div className="App">
       <Switch>
-        <Route path="/recipes" component={Recipes} />
-        <Route path="/recipe/:id" component={Recipe} />
+        <Route exact path="/recipes" component={Recipes} />
         <Route path="/favorites" component={Favorites} />
         <Route path="/user" component={User} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/scanticket" component={SearchRecipeWithScanTicket} />
-        <Route exatch path="/" component={Home} />
+        <Route path="/recipe/:id" component={Recipe} />
+        <Route exact path="/" component={Home} />
         <Route path="*" component={NotFound} />
       </Switch>
     </div>

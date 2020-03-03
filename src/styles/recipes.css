@@ -1,0 +1,26 @@
+.space {
+  display: flex;
+  margin-top: 10%;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.recipes-container {
+  display: flex;
+  width: 100vw;
+  flex-wrap: wrap;
+}
+.recipes-element {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  margin-left: 30px;
+  width: 25%;
+  background-color: #22282c;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 40px;
+
+  -webkit-box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+  -moz-box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+  box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+}
