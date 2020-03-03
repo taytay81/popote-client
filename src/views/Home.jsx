@@ -5,10 +5,8 @@ import '../styles/home.css';
 import HomeSecondSection from "./HomeSecondSection";
 
 import "../styles/home.css";
-import QuickTagSearch from "./../components/QuickTagSearch";
-import AutoComplete from "../components/AutoComplete";
 
-import SearchByIngredient from "../components/SearchByIngredient";
+// import SearchByIngredient from "../components/SearchByIngredient";
 
 
 export default class Home extends Component {

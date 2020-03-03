@@ -26,7 +26,7 @@ export default class HomeSecondSection extends Component {
     render() {
         return (
   
-                <>
+        <>
             <div id="home-second-page">
                     <NavBar/>
                 <div className="container">
