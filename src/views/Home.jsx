@@ -3,6 +3,7 @@ import NavBar from "./../components/NavBar";
 import '../styles/home.css';
 // import FilterList from "./../components/FilterList";
 import QuickTagSearch from "./../components/QuickTagSearch";
+import SearchByIngredient from "../components/SearchByIngredient";
 
 
 export default class Home extends Component {
@@ -28,9 +29,10 @@ export default class Home extends Component {
                         <form>
                             <div className="search-bar">
                                 <div className="input-and-btn">
-                                    <input id="main-search-bar" name="ingredient" 
-                                    placeholder="Ex : tomato, peach..." type="text"/>
-                                    <button className="btn-search">SEARCH</button>
+                                <SearchByIngredient />
+
+                                {/* SOME OF THE STYLING CHANGED WHENANDREW TURNED THE SEARCH INTO ITS OZWN COPONENT 
+                                MIGHT WANT TO DOUBLE CHECK THE LOCAION OF THE CSS FOR THAT COMP OR WHERE THE CALSS IS CALLED*/}
                                 </div>
                                 
                                 <div className="more-filter">

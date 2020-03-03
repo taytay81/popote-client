@@ -12,10 +12,25 @@ import NotFound from "./views/NotFound";
 import tesseract from "./Tesseract/test.js";
 import spoonacular from "./api/APISpoonacular.js";
 
+//auth
+import { useState, useEffect, useContext } from "react";
+import { useAuth } from "./auth/useAuth";
+import UserContext from "./auth/UserContext";
+import { ProtectedRoute } from "./auth/ProtectedRoute";
+
 import "./App.css";
 import SearchRecipeWithScanTicket from "./views/SearchRecipeWithScanTicket";
 
 function App() {
+  const { isLoading } = useAuth();
+  const [navMobileStatus, setNavMobileStatus] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
+
+  const UserContextValue = {
+    currentUser,
+    setCurrentUser
+  };
   /*var sp = new spoonacular();
   //get all recipes that contains cheese restrict to 2 results
   sp.searchRecipesByIngredient("cheese", 2);
@@ -31,6 +46,10 @@ function App() {
 
   //tesseract.getTextFromImage();
   return (
+    <UserContext.Provider value={UserContextValue}>
+      {isLoading ? (
+        null
+      ) : (
     <div className="App">
       <Switch>
         <Route path="/recipes" component={Recipes} />
@@ -44,6 +63,9 @@ function App() {
         <Route path="*" component={NotFound} />
       </Switch>
     </div>
+    )}
+    </UserContext.Provider>
+
   );
 }
 
