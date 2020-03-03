@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import NavBar from "./../components/NavBar";
 import "../styles/home.css";
 import QuickTagSearch from "./../components/QuickTagSearch";
+<<<<<<< HEAD
 import AutoComplete from "../components/AutoComplete";
 import APIHandler from "../api/APIHandler";
+=======
+import SearchByIngredient from "../components/SearchByIngredient";
+
+>>>>>>> fbc53105bd1b52b0e423d24ec8dfb4ac99edc2e4
 
 export default class Home extends Component {
   state = {
