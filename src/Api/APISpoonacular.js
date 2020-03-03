@@ -5,7 +5,7 @@ class APISpoonacular {
   constructor() {
     this.name = "APISpoonacular";
     this.url = "https://api.spoonacular.com/recipes";
-    this.apiKey = "b2dfbbcc885d414e9eba01838ff204c0";
+    this.apiKey = "";
     this.recipes = "";
   }
 
