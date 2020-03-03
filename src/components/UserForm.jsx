@@ -32,6 +32,7 @@ export default class UserForm extends Component {
                         className="input"
                         id="name"
                         type="text"
+                        // value={}
                     />
 
                     <label htmlFor="email">Email</label>
@@ -50,11 +51,11 @@ export default class UserForm extends Component {
                         type="password"
                     />
 
-                    <label htmlFor="password">New password</label>
+                    <label htmlFor="new_password">New password</label>
                     <input
                         name="new_password"
                         className="input"
-                        id="password"
+                        id="new_password"
                         type="text"
                     />
                     <button className="button" type="submit">UPDATE</button>

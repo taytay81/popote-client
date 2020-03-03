@@ -6,10 +6,44 @@ export default class RecipeCardXL extends Component {
 
   render() {
     const recipe = this.props.recipe;
-
+    console.log()
     return (
-      <div>
-        <div className="top-container">
+      <div className="recipe-container">
+        <div className="container">
+          <div className="recipe-left-section">
+            <div className="recipe-img">
+              <img src={recipe.image} alt={recipe.title}/>
+            </div>
+            <div className="recipe-infos">
+              <div className="recipe-timer">
+
+              </div>
+
+              <div className="recipe-tags">
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="recipe-right-section">
+            <div className="recipe-title">
+              <h1>{recipe.title}</h1>
+              <div className="recipe-ingredients">
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+      {/* <div className="top-container">
           <div>
             <h4>{recipe.title}</h4>
             <h6>{recipe.readyTime} minutes</h6>
@@ -28,10 +62,4 @@ export default class RecipeCardXL extends Component {
           <h4>Tags</h4>
           <h4>comments</h4>
           <div>need to be implemented</div>
-        </div>
-
-        {recipe.title}
-      </div>
-    );
-  }
-}
+        </div> */}

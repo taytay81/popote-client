@@ -11,6 +11,8 @@ import Signup from "./views/Signup";
 import NotFound from "./views/NotFound";
 import tesseract from "./Tesseract/test.js";
 import spoonacular from "./api/APISpoonacular.js";
+import HomeSecondSection from "./views/HomeSecondSection";
+
 
 //auth
 import { useState, useEffect, useContext } from "react";
@@ -25,7 +27,7 @@ function App() {
   const { isLoading } = useAuth();
   const [navMobileStatus, setNavMobileStatus] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({user: null, isLoggedIn: false});
 
   const UserContextValue = {
     currentUser,
@@ -59,6 +61,8 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/scanticket" component={SearchRecipeWithScanTicket} />
         <Route path="/recipe/:id" component={Recipe} />
+        <Route path="/signout" component={Home} />
+        <Route path="/search" component={HomeSecondSection}/>
         <Route exact path="/" component={Home} />
         <Route path="*" component={NotFound} />
       </Switch>

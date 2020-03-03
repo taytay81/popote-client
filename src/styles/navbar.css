@@ -22,7 +22,7 @@ a {
     justify-content: space-between;
 }
 
-.menu a {
+.link {
    margin-left: 20px;
    color: white;
    border: 1px solid #354147;
@@ -30,7 +30,11 @@ a {
    border-radius: 20px
 }
 
-.menu a:hover {
-    color: #;
+.link:hover {
     border-color: #D84A3B;
+    color: #D84A3B
+}
+
+.link-span {
+    cursor: pointer;
 }
