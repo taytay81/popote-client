@@ -1,24 +1,18 @@
 import React, { Component } from "react";
 import NavBar from "./../components/NavBar";
-<<<<<<< HEAD
 import '../styles/home.css';
 // import FilterList from "./../components/FilterList";
 import HomeSecondSection from "./HomeSecondSection";
-=======
+
 import "../styles/home.css";
 import QuickTagSearch from "./../components/QuickTagSearch";
-<<<<<<< HEAD
 import AutoComplete from "../components/AutoComplete";
-import APIHandler from "../api/APIHandler";
-=======
-import SearchByIngredient from "../components/SearchByIngredient";
->>>>>>> 2434cfc73b383ecadf3c77c1e78b02219946aa15
 
->>>>>>> fbc53105bd1b52b0e423d24ec8dfb4ac99edc2e4
+import SearchByIngredient from "../components/SearchByIngredient";
+
 
 export default class Home extends Component {
-<<<<<<< HEAD
-    render() {
+  render() {
         return (
             <div className="home-container"> 
                 <NavBar/>
@@ -31,22 +25,13 @@ export default class Home extends Component {
                         <a href="#home-second-page"><span className="arrow">v</span></a>
                     </div>
                 </div>
-                <HomeSecondSection/>    
-=======
-  state = {
-    ingredientsInDb: "",
-    recipesFound:[]
-  };
-
-  componentDidMount() {
-    APIHandler.get("/ingredients")
-      .then(apiRes => {
-        console.log(apiRes);
-        this.setState({ ingredientsInDb: apiRes.data });
-      })
-      .catch(apiErr => console.log(apiErr));
+                <HomeSecondSection/>   
+            </div> 
+        )
   }
-  render() {
+};
+ 
+  /* render() {
     console.log(this.state.ingredientsInDb);
     return (
       <div className="home-container">
@@ -83,14 +68,13 @@ export default class Home extends Component {
               </div>
             </form>
 
-            <div className="filter-list">{/* <FilterList/> */}</div>
-            <div className="quick-tag-search">
-              <QuickTagSearch />
->>>>>>> 2434cfc73b383ecadf3c77c1e78b02219946aa15
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+            <div className="filter-list">{/* <FilterList/> */
+    //         <div className="quick-tag-search">
+    //           <QuickTagSearch />
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // );
+//   }
+// } 
