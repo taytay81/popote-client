@@ -18,12 +18,17 @@ export default class Recipes extends Component {
   componentDidMount() {
     if (this.state.userId != "") this.setState({ isLoggedIn: true });
 
-    APIHandler.get(`/recipes`)
+    /*APIHandler.get(`/recipes`)
       .then(apiRes => {
         this.setState({ recipes: apiRes.data });
       })
-      .catch(apiErr => console.log(apiErr));
+      .catch(apiErr => console.log(apiErr));*/
     // we want to request the favorite only if we are loggedin
+
+    this.setState({ recipes: this.props.location.state.recipes });
+    console.log("aaaaaa", this.props.location.state.recipes);
+    console.log("recipes from the history", this.state.recipes);
+
     if (this.state.userId != "") {
       APIHandler.get(`/favorites/${this.state.userId}`)
         .then(apiRes => {
@@ -31,7 +36,7 @@ export default class Recipes extends Component {
             console.log(apiRes);
             this.setState({ favoritesRecipes: apiRes.data.favorites });
             if (this.state.favoritesRecipes.length > 0) this.recreateRecipe();
-          } else {
+          } /*else {
             var recipesCopy = [...this.state.recipes];
             for (let i = 0; i < recipesCopy.length; i++) {
               var recipeToAdd = recipesCopy[i];
@@ -40,7 +45,7 @@ export default class Recipes extends Component {
 
             // peut etre faut il faire un setState
             //this.setState({recipes:})
-          }
+          }*/
         })
         .catch(apiErr => console.log(apiErr));
     }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import APIHandler from "../api/APIHandler";
 import "../styles/autocomplete.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -101,6 +102,16 @@ export default class AutoComplete extends Component {
     })
       .then(apiRes => {
         console.log(apiRes);
+        this.props.history.push("/recipes", {
+          recipes: apiRes.data
+        });
+        /*let path = `/recipes`;
+        console.log(this.props.history);
+        this.props.history.push(path, apiRes.data);*/
+        /* <Redirect to={{
+            
+            state: { recipes: apiRes.data }
+        }}/>*/
         //this.setState({ : apiRes.data });
       })
       .catch(apiErr => console.log(apiErr));
@@ -108,8 +119,7 @@ export default class AutoComplete extends Component {
   };
 
   render() {
-    console.log("input render ", this.state.userInput);
-    console.log("ingredientosearch", this.state.ingredientstToSearch);
+    console.log("history", this.props.history);
     let suggestionsListComponent;
     if (this.state.showSuggestions && this.state.userInput) {
       if (this.state.filteredSuggestions.length) {

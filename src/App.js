@@ -11,6 +11,8 @@ import Signup from "./views/Signup";
 import NotFound from "./views/NotFound";
 import tesseract from "./Tesseract/test.js";
 import spoonacular from "./api/APISpoonacular.js";
+import HomeSecondSection from "./views/HomeSecondSection";
+import { browserHistory } from "react-router";
 
 //auth
 import { useState, useEffect, useContext } from "react";
@@ -25,7 +27,10 @@ function App() {
   const { isLoading } = useAuth();
   const [navMobileStatus, setNavMobileStatus] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({
+    user: null,
+    isLoggedIn: false
+  });
 
   const UserContextValue = {
     currentUser,
@@ -47,25 +52,24 @@ function App() {
   //tesseract.getTextFromImage();
   return (
     <UserContext.Provider value={UserContextValue}>
-      {isLoading ? (
-        null
-      ) : (
-    <div className="App">
-      <Switch>
-        <Route exact path="/recipes" component={Recipes} />
-        <Route path="/favorites" component={Favorites} />
-        <Route path="/user" component={User} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/scanticket" component={SearchRecipeWithScanTicket} />
-        <Route path="/recipe/:id" component={Recipe} />
-        <Route exact path="/" component={Home} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </div>
-    )}
+      {isLoading ? null : (
+        <div className="App">
+          <Switch>
+            <Route exact path="/recipes" component={Recipes} />
+            <Route path="/favorites" component={Favorites} />
+            <Route path="/user" component={User} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/scanticket" component={SearchRecipeWithScanTicket} />
+            <Route path="/recipe/:id" component={Recipe} />
+            <Route path="/signout" component={Home} />
+            <Route path="/search" component={HomeSecondSection} />
+            <Route exact path="/" component={Home} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </div>
+      )}
     </UserContext.Provider>
-
   );
 }
 

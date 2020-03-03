@@ -3,12 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
 }
 
 .home-container {
-    /* height: 100vh;
-    overflow: hidden; */
+  scroll-behavior: smooth;
 }
 
 .marketing h2 {
@@ -128,12 +127,12 @@
   background-color: #D84A3B;
 }
 
-.home-second-page > .container {
+#home-second-page > .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh
+  height: 90vh
 }
 
 /* .home-second-page {
@@ -142,7 +141,7 @@
   flex-direction: column;
 } */
 
-.home-second-page > .container > form {
+#home-second-page > .container > form {
   -webkit-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
   -moz-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
   box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);

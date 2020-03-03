@@ -1,3 +1,7 @@
-* {
-  color: white;
+.recipe-container {
+  color: white
+}
+
+.recipe-img img {
+  height: 350px
 }

@@ -6,32 +6,67 @@ export default class RecipeCardXL extends Component {
 
   render() {
     const recipe = this.props.recipe;
-
+    console.log(recipe.instructions)
     return (
-      <div>
-        <div className="top-container">
-          <div>
-            <h4>{recipe.title}</h4>
-            <h6>{recipe.readyTime} minutes</h6>
-          </div>
-          <div>
-            <img src={recipe.image} alt={recipe.image} />
-          </div>
-          <h4>Description</h4>
-          <div>missing for the moment need to be added to the seeding</div>
-          <h4>Ingredients</h4>
-          <ul>
-            <div>{recipe.ingredients}</div>
-          </ul>
-          <h4>Directions</h4>
-          <div></div>
-          <h4>Tags</h4>
-          <h4>comments</h4>
-          <div>need to be implemented</div>
-        </div>
+      <div className="recipe-container">
+        <div className="container">
 
-        {recipe.title}
+          <div className="recipe-top-section">
+            <div className="recipe-top-left-section">          
+              <div className="recipe-img">
+                <img src={recipe.image} alt={recipe.title}/>
+              </div>
+
+              <div className="recipe-tags">
+                <ul>
+                  <li>Tags</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="recipe-top-right-section">
+              <div className="recipe-title">
+                <h1>{recipe.title}</h1>
+              </div>
+
+              <div className="info-timer-rating">
+                <div className="timer">
+                  <span>{recipe.readyTime}</span>
+                  <span>Minutes</span>
+                </div>
+
+                <div className="recipe-ingredients">
+                  <h2>Ingredients</h2>
+                    {recipe.ingredients && recipe.ingredients.map((ing, i) => (
+                      <ul>
+                        <li key={i}>{ing}</li>
+                      </ul>
+                    ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="recipe-bottom-left-section">
+              <div className="recipe-desc">
+                <h2>Description</h2>
+                <p>{recipe.summary}</p>
+              </div>
+            </div>
+            <div className="recipe-bottom-right-section">
+              <h2>Steps</h2>
+              <ul>
+                {/* <li>{recipe.instructions}</li> */}
+                
+                {recipe.instructions && recipe.instructions.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
+              </ul>
+            </div>
+        </div>
       </div>
+    </div>
     );
   }
 }
+
+    
