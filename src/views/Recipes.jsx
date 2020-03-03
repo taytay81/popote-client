@@ -26,8 +26,6 @@ export default class Recipes extends Component {
     // we want to request the favorite only if we are loggedin
 
     this.setState({ recipes: this.props.location.state.recipes });
-    console.log("aaaaaa", this.props.location.state.recipes);
-    console.log("recipes from the history", this.state.recipes);
 
     if (this.state.userId != "") {
       APIHandler.get(`/favorites/${this.state.userId}`)

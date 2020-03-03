@@ -15,7 +15,6 @@ export default class HomeSecondSection extends Component {
   componentDidMount() {
     APIHandler.get("/ingredients")
       .then(apiRes => {
-        console.log(apiRes);
         this.setState({ ingredientsInDb: apiRes.data });
       })
       .catch(apiErr => console.log(apiErr));
@@ -52,7 +51,7 @@ export default class HomeSecondSection extends Component {
 
             <div className="filter-list">{/* <FilterList/> */}</div>
             <div className="quick-tag-search">
-              <QuickTagSearch />
+              <QuickTagSearch history={this.props.history} />
             </div>
           </div>
         </div>

@@ -105,21 +105,12 @@ export default class AutoComplete extends Component {
         this.props.history.push("/recipes", {
           recipes: apiRes.data
         });
-        /*let path = `/recipes`;
-        console.log(this.props.history);
-        this.props.history.push(path, apiRes.data);*/
-        /* <Redirect to={{
-            
-            state: { recipes: apiRes.data }
-        }}/>*/
-        //this.setState({ : apiRes.data });
       })
       .catch(apiErr => console.log(apiErr));
     this.setState({ userInput: "" });
   };
 
   render() {
-    console.log("history", this.props.history);
     let suggestionsListComponent;
     if (this.state.showSuggestions && this.state.userInput) {
       if (this.state.filteredSuggestions.length) {
