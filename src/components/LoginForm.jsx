@@ -7,17 +7,22 @@ import { Link, withRouter } from "react-router-dom";
 export default withRouter(function LoginForm(props) {
   const [email, setEmail] = useState("admin@popote.io");
   const [password, setPassword] = useState("12345");
-  const userContext = useContext(UserContext);
-  const { setCurrentUser } = userContext;
+  // const userContext = useContext(UserContext);
+  // const { setCurrentUser } = userContext;
 
   const submitForm = async e => {
     e.preventDefault();
     try {
       const apiRes = await APIHandler.post("/auth/login", { email, password });
-      setCurrentUser(apiRes.data.currentUser);
+      console.log("apiRes");
+      console.log(apiRes);
+      // setCurrentUser(apiRes.data.currentUser);
+      // console.log(userContext);
       props.history.push("/");
     } catch (err) {
-      setCurrentUser(null);
+      console.log("err.response");
+      console.log(err.response);
+      // setCurrentUser(null);
     }
   };
 

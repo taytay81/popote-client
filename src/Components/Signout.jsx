@@ -12,7 +12,7 @@ export default withRouter(function IconSignout(props) {
   const handleSignout = () =>
     APIHandler.post("/auth/signout").finally(() => {
       props.history.push("/");
-      setCurrentUser(null);
+      // setCurrentUser(null);
     });
 
   return (

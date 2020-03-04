@@ -4,16 +4,19 @@ import "./../styles/navbar.css";
 import { useAuth } from "../auth/useAuth";
 import Signout from "../components/Signout";
 import UserContext from "../auth/UserContext";
+import logo from "../images/logo.png"
+
 export default function NavBar() {
-  // const { isLoading, isLoggedIn, currentUser } = useAuth();
+  useAuth();
   const { currentUser } = useContext(UserContext);
+
   return (
     <>
       {currentUser ? (
         <div className="navbar">
           <div className="container">
             <NavLink exact to="/" activeClassName="is-active">
-              <h1>POPOTE</h1>
+            <img src={logo} width="80px" height="90px"/>
             </NavLink>
             <div className="menu">
               <NavLink
@@ -33,7 +36,7 @@ export default function NavBar() {
               >
                 FAVORITES
               </NavLink>
-              
+
               <NavLink
                 to="/scanticket"
                 className="link"
@@ -41,7 +44,7 @@ export default function NavBar() {
               >
                 Search WITH Scan
               </NavLink>
-              <NavLink to="/user" className="link" activeClassName="is-active">
+              <NavLink to={`/user/${currentUser._id}`} className="link" activeClassName="is-active">
                 MY PROFIL
               </NavLink>
               {/* <NavLink
@@ -69,8 +72,8 @@ export default function NavBar() {
       ) : (
         <div className="navbar">
           <div className="container">
-            <NavLink exact to="/" className="link" activeClassName="is-active">
-              <h1>POPOTE</h1>
+            <NavLink exact to="/" activeClassName="is-active">
+              <img src={logo} width="80px" height="90px"/>
             </NavLink>
             <div className="menu">
               <NavLink
@@ -82,24 +85,12 @@ export default function NavBar() {
                 SEARCH
               </NavLink>
               <NavLink
-                to="/favorites"
-                exact
-                className="link"
-                activeClassName="is-active"
-              >
-                FAVORITES
-              </NavLink>
-              <NavLink
                 to="/scanticket"
                 className="link"
                 activeClassName="is-active"
               >
                 Search WITH Scan
               </NavLink>
-              <NavLink to="/user" className="link" activeClassName="is-active">
-                MY PROFIL
-              </NavLink>
-
               <NavLink to="/login" className="link" activeClassName="is-active">
                 LOG IN
               </NavLink>
