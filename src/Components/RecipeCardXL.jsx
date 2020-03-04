@@ -6,7 +6,7 @@ export default class RecipeCardXL extends Component {
 
   render() {
     const recipe = this.props.recipe;
-    console.log(recipe.instructions);
+    console.log(typeof recipe.instructions);
     return (
       <div className="recipe-container">
         <div className="container">
@@ -30,10 +30,12 @@ export default class RecipeCardXL extends Component {
               </div>
 
               <div className="info-timer-rating">
-                <div className="timer">
-                  <span>{recipe.readyTime}</span>
-                  <span>Minutes</span>
+                <div className="recipe-timer">
+                  <span id="timer">{recipe.readyTime}</span>
+                  <span id="minutes">Minutes</span>
                 </div>
+                <div className="recipe-rating">
+                  number of stars
 
                 <div className="recipe-ingredients">
                   <h2>Ingredients</h2>
@@ -45,24 +47,43 @@ export default class RecipeCardXL extends Component {
                       </ul>
                 </div>
               </div>
-            </div>
 
-            <div className="recipe-bottom-left-section">
+              <div className="recipe-ingredients">
+                <h2>Ingredients</h2>
+                    <ul>
+                      {recipe.ingredients &&recipe.ingredients.map((ing, i) => (
+                        <li key={i}>> {ing}</li>
+                      ))}
+                    </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="recipe-bottom-section">                
+            <div className="recipe-bottom">
               <div className="recipe-desc">
                 <h2>Description</h2>
                 <p>{recipe.summary}</p>
               </div>
+            
+              <div className="recipe-steps">
+                <h2>Steps</h2>
+                <ul>
+                    {/* {recipe.instructions && recipe.instructions.map((step, i) => (
+                      
+                      <li key={i}>{step.steps}</li>
+                    ))} */}
+                </ul>
+              </div>
             </div>
-            <div className="recipe-bottom-right-section">
-              <h2>Steps</h2>
-              <ul>
-                {/* <li>{recipe.instructions}</li> 
-      {recipe.instructions && recipe.instructions.map((step, i) => (
-        <li key={i}>{step}</li>
-      ))}*/}
-              </ul>
+            <div className="recipe-review">
+              <button className="btn-add-review">
+                REVIEW IT
+              </button>
             </div>
           </div>
+         
+            
         </div>
       </div>
     );

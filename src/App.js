@@ -24,13 +24,10 @@ import "./App.css";
 import SearchRecipeWithScanTicket from "./views/SearchRecipeWithScanTicket";
 
 function App() {
-  const { isLoading } = useAuth();
+  const { isLoading, currentUser: toto} = useAuth();
   const [navMobileStatus, setNavMobileStatus] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [currentUser, setCurrentUser] = useState({
-    user: null,
-    isLoggedIn: false
-  });
+  const [currentUser, setCurrentUser] = useState(toto || null);
 
   const UserContextValue = {
     currentUser,
@@ -57,7 +54,7 @@ function App() {
           <Switch>
             <Route exact path="/recipes" component={Recipes} />
             <Route path="/favorites" component={Favorites} />
-            <Route path="/user" component={User} />
+            <Route path="/user/:id" component={User} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/scanticket" component={SearchRecipeWithScanTicket} />
