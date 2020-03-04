@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import "./../styles/recipeCardXl.css";
+import Star from "./RatingStars";
 
 export default class RecipeCardXL extends Component {
   // state = {};
 
   render() {
     const recipe = this.props.recipe;
+    const stars = [];
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= recipe.rating) stars.push(<Star shape={"full"} />);
+      if (i > recipe.rating) stars.push(<Star shape={"empty"} />);
+    }
 
     return (
       <div className="recipe-container">
@@ -15,20 +22,11 @@ export default class RecipeCardXL extends Component {
               <div className="recipe-img">
                 <img src={recipe.image} alt={recipe.title} />
               </div>
-
-              <div className="recipe-tags">
-                <ul>
-                  <li>Tags</li>
-                </ul>
-              </div>
             </div>
 
             <div className="recipe-top-right-section">
               <div className="recipe-title">
                 <h1>{recipe.title}</h1>
-                <h4>
-                  {recipe.rating} (<span>{recipe.ratingCount}</span>)
-                </h4>
               </div>
 
               <div className="info-timer-rating">
@@ -36,7 +34,13 @@ export default class RecipeCardXL extends Component {
                   <span id="timer">{recipe.readyTime}</span>
                   <span id="minutes">Minutes</span>
                 </div>
-                <div className="recipe-rating">number of stars</div>
+                <div className="recipe-rating">
+                  <h2>Rating</h2>
+                  <div className="stars">{stars}</div>
+                  <span>
+                    {recipe.rating} ({recipe.ratingCount})
+                  </span>
+                </div>
 
                 <div className="recipe-ingredients">
                   <h2>Ingredients</h2>
@@ -44,20 +48,19 @@ export default class RecipeCardXL extends Component {
                     {recipe.ingredients &&
                       recipe.ingredients.map((ing, i) => (
                         <li key={i}>{ing}</li>
-                      ))}{" "}
-                    */}
+                      ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="recipe-ingredients">
-                <h2>Ingredients</h2>
+              <div className="recipe-tags">
+                <h2>Categories</h2>
+                {/* <div className="tag-list"> */}
                 <ul>
-                  {recipe.ingredients &&
-                    recipe.ingredients.map((ing, i) => (
-                      <li key={i}>> {ing}</li>
-                    ))}
+                  {recipe.tags &&
+                    recipe.tags.map((tag, i) => <li key={i}>{tag}</li>)}
                 </ul>
+                {/* </div> */}
               </div>
             </div>
           </div>
@@ -70,12 +73,15 @@ export default class RecipeCardXL extends Component {
               </div>
 
               <div className="recipe-steps">
+                {console.log("instructions!!!!!", recipe.instructions)}
                 <h2>Steps</h2>
                 <ul>
-                  {/* {recipe.instructions && recipe.instructions.map((step, i) => (
-                      
-                      <li key={i}>{step.steps}</li>
-                    ))} */}
+                  {recipe.instructions &&
+                    recipe.instructions.map((step, i) => (
+                      <li key={i}>
+                        {step.number} - {step.step}
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
