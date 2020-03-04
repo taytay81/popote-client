@@ -35,6 +35,15 @@ export default class RecipeCardXL extends Component {
                 </div>
                 <div className="recipe-rating">
                   number of stars
+
+                <div className="recipe-ingredients">
+                  <h2>Ingredients</h2>
+                  {recipe.ingredients &&
+                    recipe.ingredients.map((ing, i) => (
+                      <ul>
+                        <li key={i}>{ing}</li>
+                      </ul>
+                    ))} */}
                 </div>
               </div>
 
