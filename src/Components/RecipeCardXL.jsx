@@ -26,6 +26,7 @@ export default class RecipeCardXL extends Component {
             <div className="recipe-top-right-section">
               <div className="recipe-title">
                 <h1>{recipe.title}</h1>
+                <h4>{recipe.rating} (<span>{recipe.ratingCount}</span>)</h4>
               </div>
 
               <div className="info-timer-rating">
@@ -36,12 +37,12 @@ export default class RecipeCardXL extends Component {
 
                 <div className="recipe-ingredients">
                   <h2>Ingredients</h2>
+                  <ul>
                   {recipe.ingredients &&
                     recipe.ingredients.map((ing, i) => (
-                      <ul>
                         <li key={i}>{ing}</li>
+                      ))} */}
                       </ul>
-                    ))} */}
                 </div>
               </div>
             </div>
