@@ -35,6 +35,7 @@ export default class RecipeCardXL extends Component {
                 </div>
                 <div className="recipe-rating">
                   number of stars
+                </div>
 
                 <div className="recipe-ingredients">
                   <h2>Ingredients</h2>
@@ -49,11 +50,11 @@ export default class RecipeCardXL extends Component {
 
               <div className="recipe-ingredients">
                 <h2>Ingredients</h2>
-                    <ul>
-                      {recipe.ingredients &&recipe.ingredients.map((ing, i) => (
-                        <li key={i}>> {ing}</li>
-                      ))}
-                    </ul>
+                <ul>
+                  {recipe.ingredients &&recipe.ingredients.map((ing, i) => (
+                    <li key={i}>> {ing}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -80,9 +81,7 @@ export default class RecipeCardXL extends Component {
                 REVIEW IT
               </button>
             </div>
-          </div>
-         
-            
+          </div>  
         </div>
       </div>
     );

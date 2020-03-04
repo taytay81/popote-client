@@ -1,37 +1,45 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect, useContext, Component } from "react";
 import "../styles/user-form.css";
 import { useAuth } from "../auth/useAuth";
 import UserContext from "../auth/UserContext";
 import RecipeCardXs from "./../components/RecipeCardXs";
 import APIHandler from "../api/APIHandler";
+import { Link, withRouter } from "react-router-dom";
 
-export default function UserForm() {
+export default withRouter(function UserForm(props) {
   const [
-    { msg, avatar, name, email, password, new_password, tags },
+    { avatar, firstname, lastname, email },
     setState
   ] = useState({
-    msg: "",
     avatar: "",
-    name: "",
-    email: "",
-    password: "",
-    new_password: "",
-    tags: []
+    firstname: "",
+    lastname: "",
+    email: ""
   });
 
+  const userContext = useContext(UserContext);
+  const { setCurrentUser } = userContext;
   const { currentUser, isLoading, isLoggedIn } = useAuth();
 
 
   const handleChange = e => {
     e.persist();
-    this.setState(prevState => ({
+    setState(prevState => ({
       ...prevState,
       [e.target.name]: e.target.value
     }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    try {
+      const apiRes = await APIHandler.patch(`/users/${currentUser._id}`, {firstname, lastname, email});
+      setCurrentUser(apiRes.data.currentUser);
+      console.log(userContext);
+      props.history.push("/");
+    } catch (err) {
+      // setCurrentUser(null);
+    }
   };
 
   return isLoading ? (
@@ -64,9 +72,9 @@ export default function UserForm() {
         defaultValue={currentUser.email}
       />
 
-      <label htmlFor="password">Password</label>
+      {/* <label htmlFor="password">Password</label>
       <input 
-        name="password" 
+        name="password"
         className="input" 
         id="password" 
         type="password" 
@@ -78,10 +86,10 @@ export default function UserForm() {
         className="input"
         id="new_password"
         type="text"
-      />
+      /> */}
       <button className="button" type="submit">
         UPDATE
       </button>
     </form>
   );
-}
+})
