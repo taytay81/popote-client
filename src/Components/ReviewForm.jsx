@@ -1,43 +1,50 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useState } from "react";
 import apiHandler from "../api/APIHandler";
 import UserContext from "../auth/UserContext";
+import { Link, withRouter } from "react-router-dom";
 
-export default class ReviewForm extends Component {
-    state = {
-        body: "",
-        currentUserId: "5e5f6653d65ed9476201c541",
-        recipeId: this.props.recipe._id
-        // rating: this.props.recipe.rating,
+export default withRouter(function ReviewForm({ recipeId, clbk, recipeRating, ratingCount }) {
+    // state={
+    //     rating: recipeRating
+    // }
+
+    const [body, setBody] = useState("")
+    const [userRating, setRating] = useState(recipeRating)
+    
 
 
-    }
-
-    componentDidUpdate(){
-        console.log(this.state.body)
-        
-    }
-
-    handleSubmit = evt => {
+    const handleSubmit = evt => {
         evt.preventDefault();
-        apiHandler.post(`/review/create/${this.state.recipeId}`, this.state)
-        console.log(this.state.currentUserId)
+        console.log(userRating)
+        const newRating = userRating && recipeRating ? (Number(userRating) + recipeRating) /2  : userRating; 
+        const newCount = ratingCount + 1
+        console.log(`new rating! ${newCount} ${userRating} + ${recipeRating} = ${newRating}`)
+
+        apiHandler.post(`/reviews/create/${recipeId}`, {body, newRating, userRating, newCount})
+        .then(apiRes => {
+            clbk(apiRes.data)
+        })
     }
 
-    handleChange = evt =>{
-        this.setState({body: evt.target.value})
+    const handleChange = evt => {
+        console.log(typeof evt.target)
+        console.log(ratingCount)
+        if (evt.target.name === 'body') setBody(evt.target.value)
+        if (evt.target.name === 'rating') setRating(evt.target.value)
     }
 
-    render(){
-        return(
-            <div>
-                <h2>Reviews</h2>
-                <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                    <label htmlFor="body"></label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <button type="submit">Submit</button>
-                </form> 
-                               {/*  */}
-            </div>
-        )
-    }
-}
+
+    return (
+        <div>
+            <h2>Reviews</h2>
+            <form onChange={handleChange} onSubmit={handleSubmit}>
+                <label htmlFor="rating">Rate!</label>
+                <input type="number" name="rating" id="rating" min={0} max={5} defaultValue={recipeRating}/>
+    
+                <label htmlFor="body">Body</label>
+                <textarea name="body" id="body" cols="30" rows="10" defaultValue="Tell Us More!"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    )
+})
