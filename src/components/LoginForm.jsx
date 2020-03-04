@@ -15,6 +15,7 @@ export default withRouter(function LoginForm(props) {
     try {
       const apiRes = await APIHandler.post("/auth/login", { email, password });
       setCurrentUser(apiRes.data.currentUser);
+      console.log(userContext);
       props.history.push("/");
     } catch (err) {
       setCurrentUser(null);
