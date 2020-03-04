@@ -9,7 +9,7 @@ export default class SearchRecipeWithScanTicket extends Component {
       <div>
         <NavBar></NavBar>
         <div className="space"></div>
-        <ScanTicket></ScanTicket>
+        <ScanTicket history={this.props.history}></ScanTicket>
       </div>
     );
   }

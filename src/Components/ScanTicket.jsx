@@ -86,7 +86,6 @@ export default class scanTicket extends Component {
         }
       }
     });
-    console.log("copy", matchIngredientsCopy);
 
     this.setState({
       matchIngredients: matchIngredientsCopy
@@ -97,11 +96,29 @@ export default class scanTicket extends Component {
     const copy = [...this.state.matchIngredients];
     copy[i].ingredientChecked = event.target.checked;
     this.setState({ matchIngredients: copy });
-    console.log(this.state.matchIngredients);
   };
+  searchForRecipes = e => {
+    e.preventDefault();
 
+    console.log("ingredients", this.state.matchIngredients);
+    var ingredientsTosend = [];
+    for (let i = 0; i < this.state.matchIngredients.length; i++) {
+      if (this.state.matchIngredients[i].ingredientChecked)
+        ingredientsTosend.push(this.state.matchIngredients[i].name);
+    }
+
+    APIHandler.get("/recipes/ingredients", {
+      ingredients: ingredientsTosend
+    })
+      .then(apiRes => {
+      
+        this.props.history.push("/recipes", {
+          recipes: apiRes.data
+        });
+      })
+      .catch(apiErr => console.log(apiErr));
+  };
   render() {
-    console.log("tableau retourne", this.state.matchIngredients);
     return (
       <div className="scanTicket-section">
         <div className="scanTicket-left">
@@ -156,7 +173,10 @@ export default class scanTicket extends Component {
                 <img src={ingredient.image} alt={ingredient.name + i} />
               </div>
             ))}
-            <button className="button"> Search For recipes</button>
+            <button onClick={e => this.searchForRecipes(e)} className="button">
+              {" "}
+              Search For recipes
+            </button>
           </div>
         )}
       </div>

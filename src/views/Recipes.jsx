@@ -17,16 +17,7 @@ export default class Recipes extends Component {
 
   componentDidMount() {
     if (this.state.userId != "") this.setState({ isLoggedIn: true });
-
-    /*APIHandler.get(`/recipes`)
-      .then(apiRes => {
-        this.setState({ recipes: apiRes.data });
-      })
-      .catch(apiErr => console.log(apiErr));*/
-    // we want to request the favorite only if we are loggedin
-
     this.setState({ recipes: this.props.location.state.recipes });
-
     if (this.state.userId != "") {
       APIHandler.get(`/favorites/${this.state.userId}`)
         .then(apiRes => {
@@ -34,16 +25,7 @@ export default class Recipes extends Component {
             console.log(apiRes);
             this.setState({ favoritesRecipes: apiRes.data.favorites });
             if (this.state.favoritesRecipes.length > 0) this.recreateRecipe();
-          } /*else {
-            var recipesCopy = [...this.state.recipes];
-            for (let i = 0; i < recipesCopy.length; i++) {
-              var recipeToAdd = recipesCopy[i];
-              recipeToAdd.favorite = false;
-            }
-
-            // peut etre faut il faire un setState
-            //this.setState({recipes:})
-          }*/
+          }
         })
         .catch(apiErr => console.log(apiErr));
     }
@@ -51,45 +33,54 @@ export default class Recipes extends Component {
 
   //need to create function that is searching in the recipes favorites and update the array with recipes to know if its in the favorite
   //a new field Infavorite should be created with a false value
-  recreateRecipe = (allRecipes, favoritesRecipes) => {
-    var recipesCopy = [...this.state.recipes];
-
+  recreateRecipe = () => {
+    var RecipeswithFavoriteState = [];
     var allRecipes = this.state.recipes;
-    var favoritesRecipes = this.state.favoritesRecipes;
+    var favoriteRecipes = this.state.favoritesRecipes;
 
-    console.log("hhhhhhhhhhh", allRecipes, favoritesRecipes);
+    allRecipes.map(function(recipe, index) {
+      var found = false;
 
-    favoritesRecipes.map(function(favrecipe, i) {
-      for (let i = 0; i < allRecipes.length; i++) {
-        if (allRecipes[i].name === favrecipe.name) {
-          var recipeToAdd = recipesCopy[i];
-          recipeToAdd.favorite = true;
-        } else {
-          var recipeToAdd = recipesCopy[i];
-          recipeToAdd.favorite = false;
-        }
+      for (let i = 0; i < favoriteRecipes.length; i++) {
+        var recipeToAdd = recipe;
+        if (recipe._id === favoriteRecipes[i]._id) found = true;
       }
+      if (found) recipeToAdd.favorite = true;
+      else recipeToAdd.favorite = false;
+      RecipeswithFavoriteState.push(recipeToAdd);
     });
-    console.log("llll", recipesCopy);
+    console.log("new recipes ", RecipeswithFavoriteState);
+    this.setState({ recipes: RecipeswithFavoriteState });
   };
 
   handleFavorite = (title, id, action) => {
+    var recipescopy = [...this.state.recipes];
+    this.state.recipes.map(function(recipe, index) {
+      if (recipe._id === id) {
+        var recipeTochange = recipe;
+        recipeTochange.favorite = !recipe.favorite;
+        recipescopy[index] = recipeTochange;
+      }
+    });
+    console.log("aaaaaaaa", recipescopy);
+    this.setState({ recipes: recipescopy });
     //only if we are loggin
     // we can add a recipe to our favorite from the recipes page
     if (action === "delete") {
-      const recipesUpdate = [...this.state.recipes].filter(
+      /* const recipesUpdate = [...this.state.recipes].filter(
         f => f.title !== title
       );
       this.setState({
         recipes: recipesUpdate
-      });
-      APIHandler.patch(`/favorites/${this.state.userId}/${id}`, { id })
+      });*/
+      APIHandler.delete(`/favorites/${this.state.userId}/${id}`, { id })
         .then(apiRes => {
           console.log(apiRes);
         })
         .catch(apiErr => console.log(apiErr));
     } else if (action === "add") {
       console.log("we are trying to add");
+
       APIHandler.patch(`/favorites/${this.state.userId}/${id}`, { id })
         .then(apiRes => {
           console.log(apiRes);
@@ -114,7 +105,7 @@ export default class Recipes extends Component {
                   readyTime={recipe.readyTime}
                   id={recipe._id}
                   isLoggedIn={this.state.isLoggedIn}
-                  favorite={this.state.favorite}
+                  favorite={recipe.favorite}
                   clbk={this.handleFavorite}
                 ></RecipeCardM>
               </div>

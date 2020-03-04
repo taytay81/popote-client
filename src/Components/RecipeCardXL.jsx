@@ -6,7 +6,7 @@ export default class RecipeCardXL extends Component {
 
   render() {
     const recipe = this.props.recipe;
-    console.log(recipe.instructions);
+
     return (
       <div className="recipe-container">
         <div className="container">
