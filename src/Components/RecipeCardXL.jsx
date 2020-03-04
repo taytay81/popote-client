@@ -6,15 +6,14 @@ export default class RecipeCardXL extends Component {
 
   render() {
     const recipe = this.props.recipe;
-    console.log(recipe.instructions)
+    console.log(recipe.instructions);
     return (
       <div className="recipe-container">
         <div className="container">
-
           <div className="recipe-top-section">
-            <div className="recipe-top-left-section">          
+            <div className="recipe-top-left-section">
               <div className="recipe-img">
-                <img src={recipe.image} alt={recipe.title}/>
+                <img src={recipe.image} alt={recipe.title} />
               </div>
 
               <div className="recipe-tags">
@@ -37,7 +36,8 @@ export default class RecipeCardXL extends Component {
 
                 <div className="recipe-ingredients">
                   <h2>Ingredients</h2>
-                    {/* {recipe.ingredients && recipe.ingredients.map((ing, i) => (
+                  {recipe.ingredients &&
+                    recipe.ingredients.map((ing, i) => (
                       <ul>
                         <li key={i}>{ing}</li>
                       </ul>
@@ -55,18 +55,15 @@ export default class RecipeCardXL extends Component {
             <div className="recipe-bottom-right-section">
               <h2>Steps</h2>
               <ul>
-                {/* <li>{recipe.instructions}</li> */}
-                
-                {recipe.instructions && recipe.instructions.map((step, i) => (
-                  <li key={i}>{step.step}</li>
-                ))}
+                {/* <li>{recipe.instructions}</li> 
+      {recipe.instructions && recipe.instructions.map((step, i) => (
+        <li key={i}>{step}</li>
+      ))}*/}
               </ul>
             </div>
+          </div>
         </div>
       </div>
-    </div>
     );
   }
 }
-
-    

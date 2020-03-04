@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import './../styles/quick-tag-search.css';
+import React, { Component } from "react";
+import "./../styles/quick-tag-search.css";
 import APIHandler from "../api/APIHandler";
 
 export default class QuickTagSearch extends Component {
@@ -9,20 +9,38 @@ export default class QuickTagSearch extends Component {
     selectedTags: [],
     selected: "not-selected"
   };
+  searchForRecipe = tag => {
+    APIHandler.get("/tags/tagname/" + tag)
+      .then(apiRes => {
+        console.log(apiRes);
+        this.props.history.push("/recipes", {
+          recipes: apiRes.data
+        });
+      })
+      .catch(apiErr => console.log(apiErr));
+  };
 
-  handleClick = e => {
-    console.log(e.target.value);
-    this.setState({ isToggle: !this.state.isToggle });
-    if (this.state.isToggle) {
+  handleClick = (e, tagname) => {
+    console.log("value button", tagname);
+    console.log(e.currentTarget);
+    this.searchForRecipe("vegan");
+    
+
+    //this.setState({ isToggle: !this.state.isToggle });
+    /*if (this.state.isToggle) {
       e.target.className = "selected";
-    } else {
+      //search in the db for recipes
+      
+      //redirect to the recipes page
+    } /*else {
       e.target.className = "not-selected";
-    }
+    }*/
   };
 
   componentDidMount() {
     APIHandler.get("/tags")
       .then(apiRes => {
+        console.log(apiRes.data);
         this.setState({ tags: apiRes.data.apiRes });
       })
       .catch(apiErr => console.error(apiErr));
@@ -37,7 +55,7 @@ export default class QuickTagSearch extends Component {
             {this.state.tags.map((tag, i) => (
               <li
                 className={this.state.selected}
-                onClick={this.handleClick}
+                onClick={() => this.handleClick(tag.name)}
                 key={i}
                 value={tag.name}
               >

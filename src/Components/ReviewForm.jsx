@@ -5,7 +5,10 @@ import UserContext from "../auth/UserContext";
 export default class ReviewForm extends Component {
     state = {
         body: "",
-        currentUser: "5e5f6653d65ed9476201c541"
+        currentUserId: "5e5f6653d65ed9476201c541",
+        recipeId: this.props.recipe._id
+        // rating: this.props.recipe.rating,
+
 
     }
 
@@ -16,8 +19,8 @@ export default class ReviewForm extends Component {
 
     handleSubmit = evt => {
         evt.preventDefault();
-        apiHandler.post(`/review/create/${this.props.recipe._id}`, this.state)
-        console.log(currentUser)
+        apiHandler.post(`/review/create/${this.state.recipeId}`, this.state)
+        console.log(this.state.currentUserId)
     }
 
     handleChange = evt =>{
