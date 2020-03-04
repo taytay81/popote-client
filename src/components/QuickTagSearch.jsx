@@ -21,26 +21,12 @@ export default class QuickTagSearch extends Component {
   };
 
   handleClick = (e, tagname) => {
-    console.log("value button", tagname);
-    console.log(e.currentTarget);
-    this.searchForRecipe("vegan");
-    
-
-    //this.setState({ isToggle: !this.state.isToggle });
-    /*if (this.state.isToggle) {
-      e.target.className = "selected";
-      //search in the db for recipes
-      
-      //redirect to the recipes page
-    } /*else {
-      e.target.className = "not-selected";
-    }*/
+    this.searchForRecipe(e.currentTarget.innerText);
   };
 
   componentDidMount() {
     APIHandler.get("/tags")
       .then(apiRes => {
-        console.log(apiRes.data);
         this.setState({ tags: apiRes.data.apiRes });
       })
       .catch(apiErr => console.error(apiErr));
@@ -54,10 +40,9 @@ export default class QuickTagSearch extends Component {
           <ul>
             {this.state.tags.map((tag, i) => (
               <li
-                className={this.state.selected}
-                onClick={() => this.handleClick(tag.name)}
                 key={i}
-                value={tag.name}
+                className={this.state.selected}
+                onClick={this.handleClick}
               >
                 {tag.name}
               </li>

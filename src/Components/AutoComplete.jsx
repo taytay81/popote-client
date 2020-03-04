@@ -20,8 +20,6 @@ export default class AutoComplete extends Component {
   };
 
   onChange = e => {
-    //const { suggestions } = this.props.suggestion;
-    //console.log("suggestions ", suggestions);
     const userInput = e.currentTarget.value;
 
     const filteredSuggestions = this.props.suggestion.filter(
@@ -83,25 +81,22 @@ export default class AutoComplete extends Component {
     e.preventDefault();
 
     var copyingredientstToSearch = [...this.state.ingredientstToSearch];
-    console.log(copyingredientstToSearch);
 
     const filtered = copyingredientstToSearch.filter(
       ingredient =>
         ingredient.toLowerCase() === e.currentTarget.name.toLowerCase()
     );
-    console.log("tableau filtered", filtered);
+
     this.setState({ ingredientstToSearch: filtered });
   };
 
   searchForRecipe = e => {
     e.preventDefault();
-    console.log("search for recipes");
-    console.log(this.state.ingredientstToSearch);
+
     APIHandler.get("/recipes/ingredients", {
       ingredients: this.state.ingredientstToSearch
     })
       .then(apiRes => {
-        console.log(apiRes);
         this.props.history.push("/recipes", {
           recipes: apiRes.data
         });

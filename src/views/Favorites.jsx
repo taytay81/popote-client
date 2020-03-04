@@ -19,6 +19,7 @@ export default class Favorites extends Component {
   componentDidMount() {
     APIHandler.get(`/favorites/${this.state.userId}`)
       .then(apiRes => {
+        console.log(apiRes.data);
         if (apiRes.data)
           this.setState({ listOfFavorites: apiRes.data.favorites });
       })
@@ -33,13 +34,14 @@ export default class Favorites extends Component {
     this.setState({
       listOfFavorites: favoriteUpdate
     });
-    APIHandler.patch(`/favorites/${this.state.userId}/${id}`, { id })
+    APIHandler.delete(`/favorites/${this.state.userId}/${id}`, { id })
       .then(apiRes => {
-        console.log(apiRes);
+        console.log("delete from favorite", apiRes);
       })
       .catch(apiErr => console.log(apiErr));
   };
   render() {
+    console.log(this.state.listOfFavorites);
     return (
       <div>
         <NavBar />
@@ -47,19 +49,23 @@ export default class Favorites extends Component {
         <div className="space"></div>
         <div className="container">
           <div className="favorite-container ">
-            {this.state.listOfFavorites.map((recipe, i) => (
-              <div key={i} className="favorite-element">
-                <RecipeCardM
-                  title={recipe.title}
-                  image={recipe.image}
-                  readyTime={recipe.readyTime}
-                  id={recipe._id}
-                  clbk={this.handleFavorite}
-                  favorite={true}
-                  isLoggedIn={true}
-                ></RecipeCardM>
-              </div>
-            ))}
+            {this.state.listOfFavorites.length ? (
+              this.state.listOfFavorites.map((recipe, i) => (
+                <div key={i} className="favorite-element">
+                  <RecipeCardM
+                    title={recipe.title}
+                    image={recipe.image}
+                    readyTime={recipe.readyTime}
+                    id={recipe._id}
+                    clbk={this.handleFavorite}
+                    favorite={true}
+                    isLoggedIn={true}
+                  ></RecipeCardM>
+                </div>
+              ))
+            ) : (
+              <div>You dont have any favorite </div>
+            )}
           </div>
         </div>
       </div>

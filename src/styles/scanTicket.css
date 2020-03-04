@@ -77,10 +77,6 @@ button {
   background-color: #2f383d;
 }
 
-.scan-found-ingredients img {
-  filter: brightness(50%);
-}
-
 /* The checkbox-container */
 .checkbox-container {
   display: block;

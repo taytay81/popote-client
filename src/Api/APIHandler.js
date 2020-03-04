@@ -76,7 +76,7 @@ class APIHandler {
       throw new Error(
         `${this.name} delete() function expects the id of the ressource targeted for deletion`
       );
-    return this.api.delete(`${route}/${id}`);
+    return this.api.delete(`${route}`);
   }
 }
 

@@ -32,39 +32,37 @@ export default class RecipeCardM extends Component {
   };
 
   render() {
-    //add a link to view the detail recipe
-
     return (
-      <Link to={`/recipe/${this.props.id}`}>
-        <div className="recipe-card">
-          <div className="favorite-icon">
-            {this.props.isLoggedIn && this.props.favorite && (
-              <button
-                onClick={() =>
-                  this.deleteFromFavorite(this.props.title, this.props.id)
-                }
-              >
-                <FontAwesomeIcon icon={faHeart} />
-              </button>
-            )}
-            {this.props.isLoggedIn && !this.props.favorite && (
-              <button
-                onClick={() =>
-                  this.addToFavorite(this.props.title, this.props.id)
-                }
-              >
-                <FontAwesomeIcon icon={faPlusSquare} />
-              </button>
-            )}
-          </div>
+      <div className="recipe-card">
+        <div className="favorite-icon">
+          {this.props.isLoggedIn && this.props.favorite && (
+            <button
+              onClick={() =>
+                this.deleteFromFavorite(this.props.title, this.props.id)
+              }
+            >
+              <FontAwesomeIcon icon={faHeart} />
+            </button>
+          )}
+          {this.props.isLoggedIn && !this.props.favorite && (
+            <button
+              onClick={() =>
+                this.addToFavorite(this.props.title, this.props.id)
+              }
+            >
+              <FontAwesomeIcon icon={faPlusSquare} />
+            </button>
+          )}
+        </div>
+        <Link to={`/recipe/${this.props.id}`}>
           <img src={this.props.image} alt={this.props.image} />
           <h3>{this.props.title}</h3>
           <span className="timer-icon">
             <FontAwesomeIcon icon={faHourglassHalf}></FontAwesomeIcon>
           </span>
           <span> {this.handletime(this.props.readyTime)}</span>
-        </div>
-      </Link>
+        </Link>
+      </div>
     );
   }
 }

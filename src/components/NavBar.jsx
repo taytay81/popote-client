@@ -72,8 +72,8 @@ export default function NavBar() {
       ) : (
         <div className="navbar">
           <div className="container">
-            <NavLink exact to="/" className="link" activeClassName="is-active">
-              <h1>POPOTE</h1>
+            <NavLink exact to="/" activeClassName="is-active">
+              <img src={logo} width="80px" height="90px"/>
             </NavLink>
             <div className="menu">
               <NavLink
@@ -91,10 +91,6 @@ export default function NavBar() {
               >
                 Search WITH Scan
               </NavLink>
-              <NavLink to="/user" className="link" activeClassName="is-active">
-                MY PROFIL
-              </NavLink>
-
               <NavLink to="/login" className="link" activeClassName="is-active">
                 LOG IN
               </NavLink>

@@ -9,7 +9,7 @@ export default class RecipeCard extends Component {
 
   handleClickonFavorite = (title, id) => {
     this.setState({ isLiked: !this.state.isLiked });
-    console.log(this.state.isLiked, title);
+
     this.props.clbk(title, id);
   };
 
