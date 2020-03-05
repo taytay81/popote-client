@@ -13,7 +13,6 @@ export default class UserForm extends Component {
   };
 
   componentDidMount() {
-    console.log("user", this.props);
     this.setState({
       firstname: this.props.user.firstname,
       lastname: this.props.user.lastname,
@@ -23,7 +22,6 @@ export default class UserForm extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    console.log("handlesubmit");
 
     const fd = new FormData();
     fd.append("firstname", this.state.firstname);
@@ -34,16 +32,13 @@ export default class UserForm extends Component {
     //var newUser = this.state;
     APIHandler.patch(`/users/${this.props.user._id}`, fd)
       .then(apiRes => {
-        console.log(apiRes);
         this.props.setCurrentUser(apiRes.data.currentUser);
         //this.props.history.push("/");
-        console.log("user after update", this.props.user);
       })
       .catch(apiErr => console.log(apiErr));
   };
 
   handleChange = e => {
-    console.log("handlechange");
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -59,8 +54,6 @@ export default class UserForm extends Component {
   };
 
   render() {
-    console.log("state", this.state);
-    console.log("user", this.props.user);
     return (
       <div>
         <form onChange={this.handleChange}>

@@ -10,7 +10,7 @@ export default class Recipe extends Component {
     recipe: "",
     reviews: []
   };
-  
+
   componentDidMount() {
     APIHandler.get(`/recipe/${this.props.match.params.id}`)
       .then(apiRes => {
@@ -18,26 +18,30 @@ export default class Recipe extends Component {
       })
       .catch(apiErr => console.log(apiErr));
 
-      APIHandler.get(`/reviews/${this.props.match.params.id}`)
+    APIHandler.get(`/reviews/${this.props.match.params.id}`)
       .then(apiRes => {
         this.setState({ reviews: apiRes.data.dbRes });
       })
       .catch(apiErr => console.log(apiErr));
-
   }
 
-  addNewReview = (review) => {
-    const copy = [...this.state.reviews]
+  addNewReview = review => {
+    const copy = [...this.state.reviews];
     copy.push(review);
-    this.setState({reviews: copy})
-  }
+    this.setState({ reviews: copy });
+  };
 
   render() {
     return (
       <div>
         <NavBar />
-        <RecipeCardXL recipe={this.state.recipe}/>
-        <ReviewForm clbk={this.addNewReview} ratingCount={this.state.recipe.ratingCount} recipeRating={this.state.recipe.rating} recipeId={this.props.match.params.id} />
+        <RecipeCardXL recipe={this.state.recipe} />
+        <ReviewForm
+          clbk={this.addNewReview}
+          ratingCount={this.state.recipe.ratingCount}
+          recipeRating={this.state.recipe.rating}
+          recipeId={this.props.match.params.id}
+        />
         <Reviews reviews={this.state.reviews} />
       </div>
     );

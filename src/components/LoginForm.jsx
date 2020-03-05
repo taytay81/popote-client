@@ -14,14 +14,10 @@ export default withRouter(function LoginForm(props) {
     e.preventDefault();
     try {
       const apiRes = await APIHandler.post("/auth/login", { email, password });
-      console.log("apiRes");
-      console.log(apiRes);
       // setCurrentUser(apiRes.data.currentUser);
       // console.log(userContext);
       props.history.push("/");
     } catch (err) {
-      console.log("err.response");
-      console.log(err.response);
       // setCurrentUser(null);
     }
   };

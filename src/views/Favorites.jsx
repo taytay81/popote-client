@@ -21,7 +21,6 @@ export default class Favorites extends Component {
     if (this.props.user) {
       APIHandler.get(`/favorites/${this.props.user._id}`)
         .then(apiRes => {
-          console.log("test", apiRes.data);
           if (apiRes.data)
             this.setState({ listOfFavorites: apiRes.data.favorites });
         })
@@ -40,13 +39,10 @@ export default class Favorites extends Component {
       listOfFavorites: favoriteUpdate
     });
     APIHandler.delete(`/favorites/${this.props.user._id}/${id}`, { id })
-      .then(apiRes => {
-       
-      })
+      .then(apiRes => {})
       .catch(apiErr => console.log(apiErr));
   };
   render() {
-   
     console.log(this.props.user && this.props.user._id, "these are props");
     return (
       <div>
