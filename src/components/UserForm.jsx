@@ -82,7 +82,7 @@ export default class UserForm extends Component {
             type="email"
             defaultValue={this.state.email}
           />
-          <label htmlFor="avatar">avatar</label>
+          <label htmlFor="avatar">Avatar</label>
           <CustomInputFile
             avatar={this.state.avatarTmp || this.state.avatar}
             clbk={e => this.handleAvatar(e.target.files[0])}

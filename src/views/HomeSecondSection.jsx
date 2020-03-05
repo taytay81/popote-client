@@ -40,12 +40,6 @@ export default class HomeSecondSection extends Component {
                   {/* SOME OF THE STYLING CHANGED WHENANDREW TURNED THE SEARCH INTO ITS OZWN COPONENT 
                             MIGHT WANT TO DOUBLE CHECK THE LOCAION OF THE CSS FOR THAT COMP OR WHERE THE CALSS IS CALLED*/}
                 </div>
-
-                <div className="more-filter">
-                  <a href="#">
-                    <span id="style-span">more filters</span>
-                  </a>
-                </div>
               </div>
             </form>
 

@@ -4,6 +4,7 @@ import RecipeCardXL from "../components/RecipeCardXL";
 import APIHandler from "../api/APIHandler";
 import ReviewForm from "../components/ReviewForm";
 import Reviews from "../components/Reviews";
+import "./../styles/rating.css";
 
 export default class Recipe extends Component {
   state = {
@@ -35,14 +36,15 @@ export default class Recipe extends Component {
     return (
       <div>
         <NavBar />
-        <RecipeCardXL recipe={this.state.recipe} />
-        <ReviewForm
-          clbk={this.addNewReview}
-          ratingCount={this.state.recipe.ratingCount}
-          recipeRating={this.state.recipe.rating}
-          recipeId={this.props.match.params.id}
-        />
-        <Reviews reviews={this.state.reviews} />
+        <RecipeCardXL recipe={this.state.recipe}/>
+        <div className="review-area">
+          <div className="container">
+            <div className="review-area"> 
+              <ReviewForm clbk={this.addNewReview} ratingCount={this.state.recipe.ratingCount} recipeRating={this.state.recipe.rating} recipeId={this.props.match.params.id} />
+              <Reviews reviews={this.state.reviews}/>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

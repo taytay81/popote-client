@@ -47,7 +47,7 @@ export default class RecipeCardXL extends Component {
                   <ul>
                     {recipe.ingredients &&
                       recipe.ingredients.map((ing, i) => (
-                        <li key={i}>{ing}</li>
+                        <li key={i}>> {ing}</li>
                       ))}
                   </ul>
                 </div>
@@ -73,7 +73,6 @@ export default class RecipeCardXL extends Component {
               </div>
 
               <div className="recipe-steps">
-                {console.log("instructions!!!!!", recipe.instructions)}
                 <h2>Steps</h2>
                 <ul>
                   {recipe.instructions &&
@@ -84,9 +83,6 @@ export default class RecipeCardXL extends Component {
                     ))}
                 </ul>
               </div>
-            </div>
-            <div className="recipe-review">
-              <button className="btn-add-review">REVIEW IT</button>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@
 }
 
 .quick-tag-search h2 {
-    color: white;
+    color: #D84A3B;
     font-size: 40px;
     margin-bottom: 30px;
 }
@@ -39,7 +39,7 @@ li.not-selected {
     border-radius: 10px
 }
 
-li.selected  {
+li:hover {
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px 20px;
@@ -53,8 +53,9 @@ li.selected  {
     width: 20%;
     margin-top: 40px;
     padding: 20px 30px;
-    background-color: #1c2023;
+    background-color: white;
     border: none;
-    color: white;
+    color: #D84A3B;
     border-radius: 10px;
+    border: 1px solid #D84A3B
 }
