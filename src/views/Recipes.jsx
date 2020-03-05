@@ -9,17 +9,16 @@ import "../styles/recipes.css";
 
 export default class Recipes extends Component {
   state = {
-    userId: "5e5d459abc53780b88933080", //this will be retrieved from session after login
+    //userId: "5e5d459abc53780b88933080", //this will be retrieved from session after login
     recipes: [],
     favoritesRecipes: [],
     isLoggedIn: false
   };
 
   componentDidMount() {
-    if (this.state.userId != "") this.setState({ isLoggedIn: true });
     this.setState({ recipes: this.props.location.state.recipes });
-    if (this.state.userId != "") {
-      APIHandler.get(`/favorites/${this.state.userId}`)
+    if (this.props.user) {
+      APIHandler.get(`/favorites/${this.props.user._id}`)
         .then(apiRes => {
           if (apiRes.data) {
             console.log(apiRes);
@@ -29,6 +28,7 @@ export default class Recipes extends Component {
         })
         .catch(apiErr => console.log(apiErr));
     }
+    if (this.props.user) this.setState({ isLoggedIn: true });
   }
 
   //need to create function that is searching in the recipes favorites and update the array with recipes to know if its in the favorite
@@ -73,7 +73,7 @@ export default class Recipes extends Component {
       this.setState({
         recipes: recipesUpdate
       });*/
-      APIHandler.delete(`/favorites/${this.state.userId}/${id}`, { id })
+      APIHandler.delete(`/favorites/${this.props.user._id}/${id}`, { id })
         .then(apiRes => {
           console.log(apiRes);
         })
@@ -81,7 +81,7 @@ export default class Recipes extends Component {
     } else if (action === "add") {
       console.log("we are trying to add");
 
-      APIHandler.patch(`/favorites/${this.state.userId}/${id}`, { id })
+      APIHandler.patch(`/favorites/${this.props.user._id}/${id}`, { id })
         .then(apiRes => {
           console.log(apiRes);
         })
@@ -91,6 +91,7 @@ export default class Recipes extends Component {
   };
 
   render() {
+    console.log("render", this.state.isLoggedIn);
     return (
       <div>
         <NavBar />
