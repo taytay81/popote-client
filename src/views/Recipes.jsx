@@ -83,7 +83,7 @@ export default class Recipes extends Component {
       <div>
         <NavBar />
         <div className="space"></div>
-        <div className="container">
+        <div className="container-recipes">
           <div className="recipes-container">
             {this.state.recipes.map((recipe, i) => (
               <div key={i} className="recipes-element">

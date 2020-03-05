@@ -1,6 +1,13 @@
 .recipe-card img {
-  height: 200px;
-  padding-bottom: 20px;
+  height: 12vw;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+}
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-right: 0 !important;
   justify-content: center;
 }
 .favorite-icon {
@@ -9,7 +16,9 @@
 }
 .recipe-card h3 {
   color: white;
-  padding-bottom: 20px;
+  padding-bottom: 5vh;
+  padding-left: 1vw;
+  height: 8vh;
 }
 .recipe-card p {
   color: grey;
@@ -17,10 +26,18 @@
 }
 
 .recipe-card button {
-  padding: 15px 15px !important;
-
+  padding: 10px 10px !important;
   margin-top: 0px !important;
+  border-radius: 10px;
+  border: none;
+  background-color: #22282c;
 }
+
 .timer-icon {
-  margin-right: 10px;
+  margin-right: 20px;
+  padding-left: 1vw;
+}
+.timing-line {
+  display: flex;
+  align-self: flex-end;
 }

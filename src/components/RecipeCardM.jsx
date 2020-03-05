@@ -11,7 +11,6 @@ export default class RecipeCardM extends Component {
   state = { isLiked: true };
 
   deleteFromFavorite = (title, id) => {
- 
     this.props.clbk(title, id, "delete");
   };
   addToFavorite = (title, id) => {
@@ -24,6 +23,8 @@ export default class RecipeCardM extends Component {
       var rhours = Math.floor(hours);
       var minutes = (hours - rhours) * 60;
       var rminutes = Math.round(minutes);
+
+      if (minutes == 0 && rhours > 1) return rhours + " hours";
       return rhours + " hour(s) and " + rminutes + " minutes.";
     } else {
       return time + " minutes.";
@@ -40,7 +41,7 @@ export default class RecipeCardM extends Component {
                 this.deleteFromFavorite(this.props.title, this.props.id)
               }
             >
-              <FontAwesomeIcon icon={faHeart} />
+              <FontAwesomeIcon color="#d84a3b" size="lg" icon={faHeart} />
             </button>
           )}
           {this.props.isLoggedIn && !this.props.favorite && (
@@ -49,17 +50,23 @@ export default class RecipeCardM extends Component {
                 this.addToFavorite(this.props.title, this.props.id)
               }
             >
-              <FontAwesomeIcon icon={faPlusSquare} />
+              <FontAwesomeIcon color="#d84a3b" size="lg" icon={faPlusSquare} />
             </button>
           )}
         </div>
         <Link to={`/recipe/${this.props.id}`}>
           <img src={this.props.image} alt={this.props.image} />
           <h3>{this.props.title}</h3>
-          <span className="timer-icon">
-            <FontAwesomeIcon icon={faHourglassHalf}></FontAwesomeIcon>
-          </span>
-          <span> {this.handletime(this.props.readyTime)}</span>
+          <div className="timing-line">
+            <span className="timer-icon">
+              <FontAwesomeIcon
+                color="#d84a3b"
+                size="lg"
+                icon={faHourglassHalf}
+              ></FontAwesomeIcon>
+            </span>
+            <span> {this.handletime(this.props.readyTime)}</span>
+          </div>
         </Link>
       </div>
     );
