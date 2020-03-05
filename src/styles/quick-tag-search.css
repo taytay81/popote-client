@@ -1,61 +1,61 @@
 .quick-tag-search {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #22282c;
-    -webkit-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
-    -moz-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
-    box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
-    margin-top: 80px;
-    padding-top: 60px;
-    padding-bottom: 60px
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #22282c;
+  -webkit-box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+  -moz-box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+  box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+  margin-top: 80px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .quick-tag-search h2 {
-    color: #D84A3B;
-    font-size: 40px;
-    margin-bottom: 30px;
+  color: #d84a3b;
+  font-size: 40px;
+  margin-bottom: 30px;
 }
 
 .tag-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .tag-list ul {
-    color: white;
-    display: flex;
-    justify-content: space-between;
+  color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
 li.not-selected {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border: 1px solid white;
-    border-radius: 10px
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;
 }
 
-li:hover {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px 20px;
-    background-color: #D84A3B;
-    color: white;
-    cursor: pointer;
-    border-radius: 10px
+.tag-list li:hover {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #d84a3b;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .btn-tag {
-    width: 20%;
-    margin-top: 40px;
-    padding: 20px 30px;
-    background-color: white;
-    border: none;
-    color: #D84A3B;
-    border-radius: 10px;
-    border: 1px solid #D84A3B
+  width: 20%;
+  margin-top: 40px;
+  padding: 20px 30px;
+  background-color: white;
+  border: none;
+  color: #d84a3b;
+  border-radius: 10px;
+  border: 1px solid #d84a3b;
 }

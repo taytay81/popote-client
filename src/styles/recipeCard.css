@@ -31,11 +31,13 @@
   border-radius: 10px;
   border: none;
   background-color: #22282c;
+  cursor: pointer;
 }
 
 .timer-icon {
   margin-right: 20px;
   padding-left: 1vw;
+  cursor: pointer;
 }
 .timing-line {
   display: flex;

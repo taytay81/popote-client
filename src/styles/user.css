@@ -1,70 +1,68 @@
 .user-favs {
-    background-color: #22282c;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
-    -moz-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
-    box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
+  background-color: #22282c;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+  -moz-box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
+  box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
 }
 
 .left-section {
-    display: flex;
-    flex-direction: column;
-    margin-right: 30px;
-    margin-left: 30px;
-    width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  margin-left: 30px;
+  width: 40%;
 }
 
-
 .user-favs h2 {
-    color: #D84A3B;
-    font-weight: normal;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 40px;
-    border-bottom: 1px solid #1c2023;
+  color: #d84a3b;
+  font-weight: normal;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  border-bottom: 1px solid #1c2023;
 }
 
 .title-user {
-    color: white;
-    font-size: 25px;
-    margin-bottom: 30px;
+  color: white;
+  font-size: 25px;
+  margin-bottom: 30px;
 }
 
 .user-section {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .box-fav {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .img-fav {
-    height: 50px;
+  height: 50px;
 }
 
 .title-fav {
-    margin: 0;
-    padding: 0;
-    color: white;
+  margin: 0;
+  padding: 0;
+  color: white;
 }
 
 .user-space {
-    display: flex;
-    margin-top: 10%;
-    justify-content: space-evenly;
-    width: 100%
+  display: flex;
+  margin-top: 10%;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .right-section {
-    margin-left: 70px
+  margin-left: 70px;
 }
 
 .right-section h3 {
-    color: white;
-    font-size: 22px;
-    font-weight: normal;
+  color: white;
+  font-size: 22px;
+  font-weight: normal;
 }
-

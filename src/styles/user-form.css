@@ -57,4 +57,5 @@ input {
 }
 .icon-avatar img {
   max-width: 50%;
+  margin-top: 10px;
 }
