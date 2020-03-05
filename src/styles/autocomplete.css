@@ -2,3 +2,8 @@
   color: white;
 }
 
+.suggestions {
+  max-height: 200px;
+  overflow: hidden;
+}
+

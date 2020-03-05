@@ -144,8 +144,8 @@ export default class AutoComplete extends Component {
           </div>
 
           {suggestionsListComponent}
-          <div>
-            <ul>
+          <div className="ingredients-list">
+            <ul className="suggestions">
               {this.state.ingredientstToSearch.map((ingredient, i) => (
                 <li key={i}>
                   {ingredient}

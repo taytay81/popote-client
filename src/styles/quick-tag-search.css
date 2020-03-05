@@ -18,6 +18,11 @@
     margin-bottom: 30px;
 }
 
+.right-side p {
+    color: white;
+    font-size: 20px;
+}
+
 .tag-list {
     display: flex;
     justify-content: center;
@@ -39,7 +44,7 @@ li.not-selected {
     border-radius: 10px
 }
 
-li:hover {
+.tag-list li:hover {
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px 20px;
