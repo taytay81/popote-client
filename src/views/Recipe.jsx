@@ -37,8 +37,9 @@ export default class Recipe extends Component {
       <div>
         <NavBar />
         <RecipeCardXL recipe={this.state.recipe}/>
-        <div className="review-area">
+        <div className="review-global-area">
           <div className="container">
+            <h2 id="id-review">Review the dish !</h2>
             <div className="review-area"> 
               <ReviewForm clbk={this.addNewReview} ratingCount={this.state.recipe.ratingCount} recipeRating={this.state.recipe.rating} recipeId={this.props.match.params.id} />
               <Reviews reviews={this.state.reviews}/>
