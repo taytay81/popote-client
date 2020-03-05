@@ -1,4 +1,4 @@
-.review-area {
+/* .review-area {
     display: flex;
     flex-direction: column;
     background-color: #22282c;
@@ -7,6 +7,11 @@
     -moz-box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
     box-shadow: 1px 0px 34px 12px rgba(34, 40, 44, 0.62);
     margin-bottom: 40px;
+    width: 42%
+} */
+
+.review-global-area {
+    width: 22%;
 }
 
 .review-area h2 {
@@ -17,7 +22,7 @@
 .left-side {
     background-color: #354147;
     padding: 30px;
-    width: 38%
+    width: 100%
 }
 
 .button-rate {

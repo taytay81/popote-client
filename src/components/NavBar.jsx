@@ -42,10 +42,10 @@ export default function NavBar() {
                 className="link"
                 activeClassName="is-active"
               >
-                Search WITH Scan
+                SCAN YOUR TICKET
               </NavLink>
               <NavLink to={`/user/${currentUser._id}`} className="link" activeClassName="is-active">
-                MY PROFIL
+                MY PROFILE
               </NavLink>
               {/* <NavLink
             to="/recipes"
@@ -89,7 +89,7 @@ export default function NavBar() {
                 className="link"
                 activeClassName="is-active"
               >
-                Search WITH Scan
+                SCAN YOUR TICKET
               </NavLink>
               <NavLink to="/login" className="link" activeClassName="is-active">
                 LOG IN

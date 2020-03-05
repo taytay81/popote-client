@@ -38,9 +38,13 @@ export default class Recipe extends Component {
       <div>
         <NavBar />
         <RecipeCardXL recipe={this.state.recipe}/>
-        <div className="review-client">
-          <ReviewForm clbk={this.addNewReview} ratingCount={this.state.recipe.ratingCount} recipeRating={this.state.recipe.rating} recipeId={this.props.match.params.id} />
-          <Reviews reviews={this.state.reviews} />
+        <div className="review-area">
+          <div className="container">
+            <div className="review-area"> 
+              <ReviewForm clbk={this.addNewReview} ratingCount={this.state.recipe.ratingCount} recipeRating={this.state.recipe.rating} recipeId={this.props.match.params.id} />
+              <Reviews reviews={this.state.reviews}/>
+            </div>
+          </div>
         </div>
       </div>
     );
