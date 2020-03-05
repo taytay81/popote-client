@@ -14,14 +14,14 @@ label {
   width: 100%;
 }
 
-input {
+.input {
   border-radius: 5px;
   height: 40px;
   background-color: #354147;
   border: none;
 }
 
-button {
+.button {
   padding: 20px 20px;
   background-color: #d84a3b;
   color: white;
