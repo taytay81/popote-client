@@ -4,7 +4,7 @@ import "./../styles/navbar.css";
 import { useAuth } from "../auth/useAuth";
 import Signout from "../components/Signout";
 import UserContext from "../auth/UserContext";
-import logo from "../images/logo.png"
+import logo from "../images/logo.png";
 
 export default function NavBar() {
   useAuth();
@@ -16,7 +16,7 @@ export default function NavBar() {
         <div className="navbar">
           <div className="container">
             <NavLink exact to="/" activeClassName="is-active">
-            <img src={logo} width="80px" height="90px"/>
+              <img src={logo} width="80px" height="90px" />
             </NavLink>
             <div className="menu">
               <NavLink
@@ -44,28 +44,21 @@ export default function NavBar() {
               >
                 SCAN YOUR TICKET
               </NavLink>
-              <NavLink to={`/user/${currentUser._id}`} className="link" activeClassName="is-active">
+              <NavLink
+                to={`/user/${currentUser._id}`}
+                className="link"
+                activeClassName="is-active"
+              >
                 MY PROFILE
               </NavLink>
-              {/* <NavLink
-            to="/recipes"
-            exact
-            className="link"
-            activeClassName="is-active"
-          >
-            RECIPES
-          </NavLink> */}
-
-              {/* <NavLink to="/login" className="link" activeClassName="is-active">
-            LOG IN
-          </NavLink> */}
-              {/* <NavLink to="/signout" className="link" activeClassName="is-active">
-            LOG OUT
-          </NavLink> */}
               <Signout />
-              {/* <NavLink to="/signup" className="link" activeClassName="is-active">
-            SIGN UP
-          </NavLink> */}
+            </div>
+            <div>
+              <img
+                className="image-navbar"
+                src={currentUser.avatar}
+                alt={currentUser.avatar}
+              />
             </div>
           </div>
         </div>
@@ -73,7 +66,7 @@ export default function NavBar() {
         <div className="navbar">
           <div className="container">
             <NavLink exact to="/" activeClassName="is-active">
-              <img src={logo} width="80px" height="90px"/>
+              <img src={logo} width="80px" height="90px" />
             </NavLink>
             <div className="menu">
               <NavLink

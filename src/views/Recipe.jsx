@@ -11,7 +11,7 @@ export default class Recipe extends Component {
     recipe: "",
     reviews: []
   };
-  
+
   componentDidMount() {
     APIHandler.get(`/recipe/${this.props.match.params.id}`)
       .then(apiRes => {
@@ -19,19 +19,18 @@ export default class Recipe extends Component {
       })
       .catch(apiErr => console.log(apiErr));
 
-      APIHandler.get(`/reviews/${this.props.match.params.id}`)
+    APIHandler.get(`/reviews/${this.props.match.params.id}`)
       .then(apiRes => {
         this.setState({ reviews: apiRes.data.dbRes });
       })
       .catch(apiErr => console.log(apiErr));
-
   }
 
-  addNewReview = (review) => {
-    const copy = [...this.state.reviews]
+  addNewReview = review => {
+    const copy = [...this.state.reviews];
     copy.push(review);
-    this.setState({reviews: copy})
-  }
+    this.setState({ reviews: copy });
+  };
 
   render() {
     return (

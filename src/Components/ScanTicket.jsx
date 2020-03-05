@@ -17,7 +17,7 @@ export default class scanTicket extends Component {
   componentDidMount() {
     APIHandler.get("/ingredients")
       .then(apiRes => {
-        console.log(apiRes);
+       
         this.setState({ ingredientsInDb: apiRes.data });
       })
       .catch(apiErr => console.log(apiErr));
@@ -100,7 +100,7 @@ export default class scanTicket extends Component {
   searchForRecipes = e => {
     e.preventDefault();
 
-    console.log("ingredients", this.state.matchIngredients);
+  
     var ingredientsTosend = [];
     for (let i = 0; i < this.state.matchIngredients.length; i++) {
       if (this.state.matchIngredients[i].ingredientChecked)

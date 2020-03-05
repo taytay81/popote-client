@@ -21,7 +21,6 @@ export default class Recipes extends Component {
       APIHandler.get(`/favorites/${this.props.user._id}`)
         .then(apiRes => {
           if (apiRes.data) {
-            console.log(apiRes);
             this.setState({ favoritesRecipes: apiRes.data.favorites });
             if (this.state.favoritesRecipes.length > 0) this.recreateRecipe();
           }
@@ -49,7 +48,7 @@ export default class Recipes extends Component {
       else recipeToAdd.favorite = false;
       RecipeswithFavoriteState.push(recipeToAdd);
     });
-    console.log("new recipes ", RecipeswithFavoriteState);
+
     this.setState({ recipes: RecipeswithFavoriteState });
   };
 
@@ -62,24 +61,17 @@ export default class Recipes extends Component {
         recipescopy[index] = recipeTochange;
       }
     });
-    
+
     this.setState({ recipes: recipescopy });
     //only if we are loggin
     // we can add a recipe to our favorite from the recipes page
     if (action === "delete") {
-  
       APIHandler.delete(`/favorites/${this.props.user._id}/${id}`, { id })
-        .then(apiRes => {
-          console.log(apiRes);
-        })
+        .then(apiRes => {})
         .catch(apiErr => console.log(apiErr));
     } else if (action === "add") {
-      console.log("we are trying to add");
-
       APIHandler.patch(`/favorites/${this.props.user._id}/${id}`, { id })
-        .then(apiRes => {
-          console.log(apiRes);
-        })
+        .then(apiRes => {})
         .catch(apiErr => console.log(apiErr));
     }
     //faire un setstate pour voir celui au favori
