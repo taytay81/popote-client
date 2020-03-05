@@ -25,7 +25,8 @@ export default class RecipeCardM extends Component {
       var rminutes = Math.round(minutes);
 
       if (minutes == 0 && rhours > 1) return rhours + " hours";
-      return rhours + " hour(s) and " + rminutes + " minutes.";
+      if (rhours > 1) return rhours + " hours and " + rminutes + " minutes.";
+      else return rhours + " hour and " + rminutes + " minutes.";
     } else {
       return time + " minutes.";
     }

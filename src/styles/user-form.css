@@ -59,3 +59,6 @@ input {
   max-width: 50%;
   margin-top: 10px;
 }
+.user-favs-element {
+  padding-right: 10px;
+}
