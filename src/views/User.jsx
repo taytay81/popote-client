@@ -1,24 +1,26 @@
 import React, { Component } from "react";
 import NavBar from "./../components/NavBar";
 import "../styles/user.css";
-import UserForm from "./../components/UserForm";
+import UserForm from "../components/UserForm";
 import RecipeCardXs from "./../components/RecipeCardXs";
 import APIHandler from "../api/APIHandler";
 
 export default class User extends Component {
   state = {
     //get the Userid from the session , hardcoded for the moment to test the code
-    userId: "5e5d459abc53780b88933080",
+    //userId: "5e5d459abc53780b88933080",
     listOfFavorites: []
   };
 
   componentDidMount() {
-    APIHandler.get(`/favorites/${this.state.userId}`)
-      .then(apiRes => {
-        if (apiRes.data)
-          this.setState({ listOfFavorites: apiRes.data.favorites });
-      })
-      .catch(apiErr => console.log(apiErr));
+    if (this.props.user) {
+      APIHandler.get(`/favorites/${this.props.user._id}`)
+        .then(apiRes => {
+          if (apiRes.data)
+            this.setState({ listOfFavorites: apiRes.data.favorites });
+        })
+        .catch(apiErr => console.log(apiErr));
+    }
   }
   render() {
     return (
@@ -47,15 +49,17 @@ export default class User extends Component {
                 </div>
               </div>
             </div>
-            <div className="right-section">
-              {/* <div className="title-user">
+            {this.props.user && (
+              <div className="right-section">
+                {/* <div className="title-user">
                                 Update your user informations
                             </div>     */}
-              <div className="form-section">
-                <h2>My account</h2>
-                <UserForm />
+                <div className="form-section">
+                  <h2>My account</h2>
+                  <UserForm user={this.props.user} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

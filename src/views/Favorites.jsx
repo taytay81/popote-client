@@ -12,18 +12,23 @@ import "../styles/favorite.css";
 
 export default class Favorites extends Component {
   state = {
-    userId: "5e5d459abc53780b88933080", //this will be retrieved from session after login
-    listOfFavorites: []
+    //userId: "5e5d459abc53780b88933080", //this will be retrieved from session after login
+    listOfFavorites: [],
+    isLoggedIn: false
   };
 
   componentDidMount() {
-    APIHandler.get(`/favorites/${this.state.userId}`)
-      .then(apiRes => {
-        console.log(apiRes.data);
-        if (apiRes.data)
-          this.setState({ listOfFavorites: apiRes.data.favorites });
-      })
-      .catch(apiErr => console.log(apiErr));
+    if (this.props.user) {
+      APIHandler.get(`/favorites/${this.props.user._id}`)
+        .then(apiRes => {
+          console.log("test", apiRes.data);
+          if (apiRes.data)
+            this.setState({ listOfFavorites: apiRes.data.favorites });
+        })
+        .catch(apiErr => console.log(apiErr));
+
+      this.setState({ isLoggedIn: true });
+    }
   }
 
   handleFavorite = (title, id) => {
@@ -34,14 +39,15 @@ export default class Favorites extends Component {
     this.setState({
       listOfFavorites: favoriteUpdate
     });
-    APIHandler.delete(`/favorites/${this.state.userId}/${id}`, { id })
+    APIHandler.delete(`/favorites/${this.props.user._id}/${id}`, { id })
       .then(apiRes => {
-        console.log("delete from favorite", apiRes);
+       
       })
       .catch(apiErr => console.log(apiErr));
   };
   render() {
-    console.log(this.state.listOfFavorites);
+   
+    console.log(this.props.user && this.props.user._id, "these are props");
     return (
       <div>
         <NavBar />
@@ -59,7 +65,7 @@ export default class Favorites extends Component {
                     id={recipe._id}
                     clbk={this.handleFavorite}
                     favorite={true}
-                    isLoggedIn={true}
+                    isLoggedIn={this.state.isLoggedIn}
                   ></RecipeCardM>
                 </div>
               ))

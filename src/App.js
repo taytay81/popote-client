@@ -13,7 +13,7 @@ import tesseract from "./Tesseract/test.js";
 import spoonacular from "./api/APISpoonacular.js";
 import HomeSecondSection from "./views/HomeSecondSection";
 import { browserHistory } from "react-router";
-
+import WithUser from "./views/WithUser";
 //auth
 import { useState, useEffect, useContext } from "react";
 import { useAuth } from "./auth/useAuth";
@@ -24,7 +24,7 @@ import "./App.css";
 import SearchRecipeWithScanTicket from "./views/SearchRecipeWithScanTicket";
 
 function App() {
-  const { isLoading, currentUser: toto} = useAuth();
+  const { isLoading, currentUser: toto } = useAuth();
   const [navMobileStatus, setNavMobileStatus] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [currentUser, setCurrentUser] = useState(toto || null);
@@ -52,9 +52,27 @@ function App() {
       {isLoading ? null : (
         <div className="App">
           <Switch>
-            <Route exact path="/recipes" component={Recipes} />
-            <Route path="/favorites" component={Favorites} />
-            <Route path="/user/:id" component={User} />
+            <Route
+              exact
+              path="/recipes"
+              render={props => (
+                <WithUser {...props} component={Recipes}></WithUser>
+              )}
+            />
+            <Route
+              path="/favorites"
+              render={props => (
+                <WithUser {...props} component={Favorites}></WithUser>
+              )}
+            />
+            <Route
+              exact
+              path="/user/:id"
+              render={props => (
+                <WithUser {...props} component={User}></WithUser>
+              )}
+            />
+
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/scanticket" component={SearchRecipeWithScanTicket} />
