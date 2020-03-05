@@ -15,14 +15,14 @@ export default withRouter(function ReviewForm({
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log(userRating);
+
     const newRating =
       userRating && recipeRating
         ? (Number(userRating) + recipeRating) / 2
         : userRating;
     const newCount = ratingCount + 1;
     console.log(
-      `new rating! ${newCount} ${userRating} + ${recipeRating} = ${newRating}`
+      `new rating! ${newCount} - ${userRating} + ${recipeRating} = ${newRating}`
     );
 
     apiHandler
@@ -33,8 +33,10 @@ export default withRouter(function ReviewForm({
         newCount
       })
       .then(apiRes => {
+        resetForm();
         clbk(apiRes.data);
-      });
+      })
+      .catch(err => console.log(err));
   };
 
   const handleChange = evt => {
@@ -70,6 +72,11 @@ export default withRouter(function ReviewForm({
     }
   }
 
+  const resetForm = () => {
+    setRating(0);
+    setBody(" ");
+  };
+
   return (
     <div>
       <h2>Review This Dish!</h2>
@@ -83,7 +90,8 @@ export default withRouter(function ReviewForm({
           id="body"
           cols="30"
           rows="10"
-          defaultValue="Tell Us More!"
+          placeholder="Tell Us More!"
+          defaultValue={body}
         ></textarea>
         <button type="submit">Submit</button>
       </form>
