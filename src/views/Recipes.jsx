@@ -62,17 +62,12 @@ export default class Recipes extends Component {
         recipescopy[index] = recipeTochange;
       }
     });
-    console.log("aaaaaaaa", recipescopy);
+    
     this.setState({ recipes: recipescopy });
     //only if we are loggin
     // we can add a recipe to our favorite from the recipes page
     if (action === "delete") {
-      /* const recipesUpdate = [...this.state.recipes].filter(
-        f => f.title !== title
-      );
-      this.setState({
-        recipes: recipesUpdate
-      });*/
+  
       APIHandler.delete(`/favorites/${this.props.user._id}/${id}`, { id })
         .then(apiRes => {
           console.log(apiRes);

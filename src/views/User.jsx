@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./../components/NavBar";
 import "../styles/user.css";
-import UserForm from "./../components/UserForm";
+import UserForm from "../components/UserForm";
 import RecipeCardXs from "./../components/RecipeCardXs";
 import APIHandler from "../api/APIHandler";
 
@@ -49,15 +49,17 @@ export default class User extends Component {
                 </div>
               </div>
             </div>
-            <div className="right-section">
-              {/* <div className="title-user">
+            {this.props.user && (
+              <div className="right-section">
+                {/* <div className="title-user">
                                 Update your user informations
                             </div>     */}
-              <div className="form-section">
-                <h2>My account</h2>
-                <UserForm />
+                <div className="form-section">
+                  <h2>My account</h2>
+                  <UserForm user={this.props.user} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
