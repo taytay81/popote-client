@@ -2,49 +2,99 @@ import React, { Component, useContext, useState } from "react";
 import apiHandler from "../api/APIHandler";
 import UserContext from "../auth/UserContext";
 import { Link, withRouter } from "react-router-dom";
+import StarClickable from "./RatingStarsClickable";
 
-export default withRouter(function ReviewForm({ recipeId, clbk, recipeRating, ratingCount }) {
-    // state={
-    //     rating: recipeRating
-    // }
+export default withRouter(function ReviewForm({
+  recipeId,
+  clbk,
+  recipeRating,
+  ratingCount
+}) {
+  const [body, setBody] = useState("");
+  const [userRating, setRating] = useState(0);
 
-    const [body, setBody] = useState("")
-    const [userRating, setRating] = useState(recipeRating)
-    
+  const handleSubmit = evt => {
+    evt.preventDefault();
 
+    const newRating =
+      userRating && recipeRating
+        ? (Number(userRating) + recipeRating) / 2
+        : userRating;
+    const newCount = ratingCount + 1;
+    console.log(
+      `new rating! ${newCount} - ${userRating} + ${recipeRating} = ${newRating}`
+    );
 
-    const handleSubmit = evt => {
-        evt.preventDefault();
-        console.log(userRating)
-        const newRating = userRating && recipeRating ? (Number(userRating) + recipeRating) /2  : userRating; 
-        const newCount = ratingCount + 1
-        console.log(`new rating! ${newCount} ${userRating} + ${recipeRating} = ${newRating}`)
+    apiHandler
+      .post(`/reviews/create/${recipeId}`, {
+        body,
+        newRating,
+        userRating,
+        newCount
+      })
+      .then(apiRes => {
+        resetForm();
+        clbk(apiRes.data);
+      })
+      .catch(err => console.log(err));
+  };
 
-        apiHandler.post(`/reviews/create/${recipeId}`, {body, newRating, userRating, newCount})
-        .then(apiRes => {
-            clbk(apiRes.data)
-        })
+  const handleChange = evt => {
+    if (evt.target.name === "body") setBody(evt.target.value);
+  };
+
+  const handleRate = index => {
+    setRating(index);
+  };
+
+  let stars = [];
+  for (let i = 1; i <= 5; i++) {
+    if (i <= userRating) {
+      stars.push(
+        <StarClickable
+          className="clickable-stars"
+          clbk={handleRate}
+          key={i}
+          index={i}
+          shape={"full"}
+        />
+      );
+    } else {
+      stars.push(
+        <StarClickable
+          className="clickable-stars"
+          clbk={handleRate}
+          key={i}
+          index={i}
+          shape={"empty"}
+        />
+      );
     }
+  }
 
-    const handleChange = evt => {
-        console.log(typeof evt.target)
-        console.log(ratingCount)
-        if (evt.target.name === 'body') setBody(evt.target.value)
-        if (evt.target.name === 'rating') setRating(evt.target.value)
-    }
+  const resetForm = () => {
+    setRating(0);
+    setBody(" ");
+  };
 
+  return (
+    <div>
+      <h2>Review This Dish!</h2>
+      <form onChange={handleChange} onSubmit={handleSubmit}>
+        <label htmlFor="rating">Rate!</label>
+        <div id="rating">{stars}</div>
 
-    return (
-        <div>
-            <h2>Reviews</h2>
-            <form onChange={handleChange} onSubmit={handleSubmit}>
-                <label htmlFor="rating">Rate!</label>
-                <input type="number" name="rating" id="rating" min={0} max={5} defaultValue={recipeRating}/>
-    
-                <label htmlFor="body">Body</label>
-                <textarea name="body" id="body" cols="30" rows="10" defaultValue="Tell Us More!"></textarea>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    )
-})
+        <label htmlFor="body">Body</label>
+        <textarea
+          name="body"
+          id="body"
+          cols="30"
+          rows="10"
+          placeholder="Tell Us More!"
+          defaultValue={body}
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+});
