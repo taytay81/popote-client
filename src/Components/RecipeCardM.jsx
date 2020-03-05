@@ -11,8 +11,7 @@ export default class RecipeCardM extends Component {
   state = { isLiked: true };
 
   deleteFromFavorite = (title, id) => {
-    /*this.setState({ isLiked: !this.state.isLiked });
-    console.log(this.state.isLiked, title);*/
+ 
     this.props.clbk(title, id, "delete");
   };
   addToFavorite = (title, id) => {
