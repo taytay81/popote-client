@@ -27,7 +27,7 @@ export default class HomeSecondSection extends Component {
           <NavBar />
           <div className="container">
             <div className="marketing-question">
-              <span>Which ingredient do you have ?</span>
+              <span>Which ingredients do you have ?</span>
             </div>
             <form>
               <div className="search-bar">
