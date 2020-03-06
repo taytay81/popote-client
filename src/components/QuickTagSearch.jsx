@@ -49,7 +49,6 @@ export default class QuickTagSearch extends Component {
             ))}
           </ul>
         </div>
-        <button className="btn-tag">QUICK SEARCH</button>
       </>
     );
   }

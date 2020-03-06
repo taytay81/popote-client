@@ -20,6 +20,7 @@ a {
 .menu {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .link {
@@ -32,12 +33,18 @@ a {
 
 .link:hover {
   border-color: #d84a3b;
-  color: #d84a3b;
+  color: white;
+}
+
+.is-active {
+  background-color: #d84a3b;
+  color: white;
+  border: 1px solid white
 }
 
 .link-span {
   cursor: pointer;
 }
 .image-navbar {
-  height: 90px;
+  margin-left: 40px;
 }

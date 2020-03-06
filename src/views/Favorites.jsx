@@ -49,7 +49,7 @@ export default class Favorites extends Component {
         <NavBar />
 
         <div className="space"></div>
-        <div className="container">
+        <div>
           <div className="favorite-container ">
             {this.state.listOfFavorites.length ? (
               this.state.listOfFavorites.map((recipe, i) => (

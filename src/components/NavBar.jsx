@@ -15,7 +15,7 @@ export default function NavBar() {
       {currentUser ? (
         <div className="navbar">
           <div className="container">
-            <NavLink exact to="/" activeClassName="is-active">
+            <NavLink exact to="/">
               <img src={logo} width="80px" height="90px" />
             </NavLink>
             <div className="menu">
@@ -44,28 +44,30 @@ export default function NavBar() {
               >
                 SCAN YOUR TICKET
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to={`/user/${currentUser._id}`}
                 className="link"
                 activeClassName="is-active"
               >
                 MY PROFILE
-              </NavLink>
-              <Signout />
-            </div>
-            <div>
-              <img
-                className="image-navbar"
-                src={currentUser.avatar}
-                alt={currentUser.avatar}
-              />
+              </NavLink> */}
+                <Signout />
+                <NavLink to={`/user/${currentUser._id}`}>
+                  <img
+                    className="image-navbar"
+                    height="80px"
+                    width="100px"
+                    src={currentUser.avatar}
+                    alt={currentUser.avatar}
+                  />
+                </NavLink>
             </div>
           </div>
         </div>
       ) : (
         <div className="navbar">
           <div className="container">
-            <NavLink exact to="/" activeClassName="is-active">
+            <NavLink exact to="/">
               <img src={logo} width="80px" height="90px" />
             </NavLink>
             <div className="menu">
