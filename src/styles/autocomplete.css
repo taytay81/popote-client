@@ -2,3 +2,31 @@
   color: white;
 }
 
+.suggestions {
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 0;
+  position: absolute;
+  left:29%;
+  background-color: #22282c;
+  border-radius: 5px;
+  overflow-y: scroll;
+  margin-top: 50px;
+}
+
+.ingredients-list {
+  margin-left: 11%;
+}
+
+.ingredients-list ul {
+  display: flex;
+}
+
+.ingredients-list li {
+  margin-right: 20px;
+}
+
+.no-suggestions {
+  margin-top: 10px;
+  margin-left: 15%
+}

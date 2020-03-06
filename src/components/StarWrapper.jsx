@@ -9,8 +9,8 @@ export default function StarWrapper(props) {
 
   const populateShowStars = () => {
     for (let i = 1; i <= 5; i++) {
-      if (i <= rating) stars.push(<Star shape={"full"} />);
-      if (i > rating) stars.push(<Star shape={"empty"} />);
+      if (i <= rating) stars.push(<Star key={i} className="review-stars" shape={"full"} />);
+      if (i > rating) stars.push(<Star key={i} className="review-stars" shape={"empty"} />);
     }
   };
 

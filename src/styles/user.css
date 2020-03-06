@@ -51,10 +51,10 @@
 }
 
 .user-space {
-  display: flex;
-  margin-top: 10%;
-  justify-content: space-evenly;
-  width: 100%;
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-evenly;
+    width: 100%
 }
 
 .right-section {

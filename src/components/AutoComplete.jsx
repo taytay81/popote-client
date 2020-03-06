@@ -113,7 +113,7 @@ export default class AutoComplete extends Component {
           <ul className="suggestions">
             {this.state.filteredSuggestions.map((suggestion, index) => {
               return (
-                <li key={index} onClick={this.onClick}>
+                <li className="ingredients-list" key={index} onClick={this.onClick}>
                   {suggestion.name}
                 </li>
               );
@@ -144,7 +144,7 @@ export default class AutoComplete extends Component {
           </div>
 
           {suggestionsListComponent}
-          <div>
+          <div className="ingredients-list">
             <ul>
               {this.state.ingredientstToSearch.map((ingredient, i) => (
                 <li key={i}>
@@ -153,7 +153,7 @@ export default class AutoComplete extends Component {
                     onClick={this.removeFromListIngredient}
                     name={ingredient}
                   >
-                    delete
+                    x
                   </button>
                 </li>
               ))}
