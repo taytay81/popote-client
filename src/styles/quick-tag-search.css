@@ -8,14 +8,14 @@
     -moz-box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
     box-shadow: 1px 0px 34px 12px rgba(34,40,44,0.62);
     margin-top: 80px;
-    padding-top: 60px;
+    padding-top: 40px;
     padding-bottom: 60px
 }
 
 .quick-tag-search h2 {
     color: #D84A3B;
     font-size: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .right-side p {

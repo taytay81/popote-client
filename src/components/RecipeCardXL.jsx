@@ -1,18 +1,13 @@
 import React, { Component } from "react";
 import "./../styles/recipeCardXl.css";
 import Star from "./RatingStars";
+import StarWrapper from "./StarWrapper";
 
 export default class RecipeCardXL extends Component {
   // state = {};
 
   render() {
     const recipe = this.props.recipe;
-    const stars = [];
-
-    for (let i = 1; i <= 5; i++) {
-      if (i <= recipe.rating) stars.push(<Star shape={"full"} />);
-      if (i > recipe.rating) stars.push(<Star shape={"empty"} />);
-    }
 
     return (
       <div className="recipe-container">
@@ -36,7 +31,7 @@ export default class RecipeCardXL extends Component {
                 </div>
                 <div className="recipe-rating">
                   <h2>Rating</h2>
-                  <div className="stars">{stars}</div>
+                  <StarWrapper rating={recipe.rating} clickable={false} />
                   <span>
                     {recipe.rating} ({recipe.ratingCount})
                   </span>
