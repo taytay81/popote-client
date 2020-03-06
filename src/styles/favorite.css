@@ -1,12 +1,8 @@
-.space {
-  display: flex;
-  margin-top: 10%;
-  justify-content: space-evenly;
-  width: 100%;
-}
+
 .favorite-container {
   display: flex;
   width: 98vw;
+  margin-top: 3%;
   flex-wrap: wrap;
 }
 .favorite-element {

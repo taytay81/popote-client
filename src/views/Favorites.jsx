@@ -47,8 +47,6 @@ export default class Favorites extends Component {
     return (
       <div>
         <NavBar />
-
-        <div className="space"></div>
         <div>
           <div className="favorite-container ">
             {this.state.listOfFavorites.length ? (
