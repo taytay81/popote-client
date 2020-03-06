@@ -9,6 +9,11 @@ export default class RecipeCardXL extends Component {
   render() {
     const recipe = this.props.recipe;
 
+    const scrubHTML = OriginalString =>
+      OriginalString.replace(/(<([^>]+)>)/gi, "");
+
+    const summary = recipe.summary && scrubHTML(recipe.summary);
+
     return (
       <div className="recipe-container">
         <div className="container">
@@ -64,7 +69,7 @@ export default class RecipeCardXL extends Component {
             <div className="recipe-bottom">
               <div className="recipe-desc">
                 <h2>Description</h2>
-                <p>{recipe.summary}</p>
+                <p>{summary}</p>
               </div>
 
               <div className="recipe-steps">
