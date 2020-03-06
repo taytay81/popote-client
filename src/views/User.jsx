@@ -37,7 +37,7 @@ export default class User extends Component {
                 <div className="user-favs-list">
                   <ul>
                     {this.state.listOfFavorites.map((recipe, i) => (
-                      <li key={i}>
+                      <li className="user-favs-element" key={i}>
                         <RecipeCardXs
                           image={recipe.image}
                           title={recipe.title}
