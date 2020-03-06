@@ -45,7 +45,6 @@ li.not-selected {
 }
 
 .tag-list li:hover {
-<<<<<<< HEAD
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px 20px;
@@ -53,15 +52,6 @@ li.not-selected {
     color: white;
     cursor: pointer;
     border-radius: 10px
-=======
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 10px 20px;
-  background-color: #d84a3b;
-  color: white;
-  cursor: pointer;
-  border-radius: 10px;
->>>>>>> 356bccdc36e0773b6206e712a044a935c2c0d6e0
 }
 
 .btn-tag {

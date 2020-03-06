@@ -80,14 +80,23 @@
 
 }
 
-.info-user-review {
-    padding: 30px;
+.box-review {
+    padding: 20px;
     background-color: #22282c;
     color: white;
     margin-right: 5%;
     -webkit-box-shadow: -1px -4px 21px -2px rgba(216, 74, 59, 0.56);
     -moz-box-shadow: -1px -4px 21px -2px rgba(216, 74, 59, 0.56);
     box-shadow: -1px -4px 21px -2px rgba(216, 74, 59, 0.56);
+}
+
+.info-user-review {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-area {
+    color: #D84A3B
 }
 
 .right-side h2 {
@@ -97,8 +106,12 @@
     margin-bottom: 30px;
 }
 
+.comment {
+    margin-top: 20px;
+}
+
 .rating-area {
-    color: black
+    color: #D84A3B
 }
 
 .user-comment {
@@ -107,7 +120,4 @@
     margin-bottom: 30px;
 }
 
-.user-name {
-    color: #D84A3B;
-}
 
