@@ -17,7 +17,6 @@ export default class scanTicket extends Component {
   componentDidMount() {
     APIHandler.get("/ingredients")
       .then(apiRes => {
-       
         this.setState({ ingredientsInDb: apiRes.data });
       })
       .catch(apiErr => console.log(apiErr));
@@ -77,7 +76,7 @@ export default class scanTicket extends Component {
           var ingredientToAdd = {
             id: ingredientsInDb[i]._id,
             name: ingredientsInDb[i].name,
-            image: ingredientsInDb.image,
+            image: ingredientsInDb[i].image,
             ingredientChecked: true
           };
           matchIngredientsCopy.push(ingredientToAdd);
@@ -100,7 +99,6 @@ export default class scanTicket extends Component {
   searchForRecipes = e => {
     e.preventDefault();
 
-  
     var ingredientsTosend = [];
     for (let i = 0; i < this.state.matchIngredients.length; i++) {
       if (this.state.matchIngredients[i].ingredientChecked)
@@ -111,7 +109,6 @@ export default class scanTicket extends Component {
       ingredients: ingredientsTosend
     })
       .then(apiRes => {
-      
         this.props.history.push("/recipes", {
           recipes: apiRes.data
         });
@@ -119,6 +116,7 @@ export default class scanTicket extends Component {
       .catch(apiErr => console.log(apiErr));
   };
   render() {
+    console.log(this.state.matchIngredients);
     return (
       <div className="scanTicket-section">
         <div className="scanTicket-left">

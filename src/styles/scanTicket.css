@@ -149,3 +149,12 @@ label {
 .upload-btn-wrapper {
   margin-top: 20px;
 }
+#fileUploader {
+  margin-bottom: 10px;
+}
+.fileUploaderContainer {
+  margin-bottom: 10px;
+}
+.scan-found-ingredients img {
+  padding: 10px;
+}

@@ -5,7 +5,16 @@ import StarWrapper from "./StarWrapper";
 
 export default class RecipeCardXL extends Component {
   // state = {};
+  styleSummary(summary) {
+    var summarycopy = [];
+    for (let i = 0; i < summary.length; i++) {
+      var index = summary.indexof("<b>", i);
 
+      console.log(index);
+    }
+
+    return summarycopy;
+  }
   render() {
     const recipe = this.props.recipe;
 
@@ -64,7 +73,7 @@ export default class RecipeCardXL extends Component {
             <div className="recipe-bottom">
               <div className="recipe-desc">
                 <h2>Description</h2>
-                <p>{recipe.summary}</p>
+                <p>{this.styleSummary(recipe.summary)}</p>
               </div>
 
               <div className="recipe-steps">
